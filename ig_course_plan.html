@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IGCSE暑期强化方案 · 新航道成都学校</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1a3a5c;
+  --navy-mid: #1a4f8b;
+  --navy-light: #d6e8f5;
+  --navy-pale: #eef5fb;
+  --green-dark: #1e4d35;
+  --green-mid: #2e7d52;
+  --green-light: #d4eddf;
+  --green-pale: #edf7f2;
+  --gold: #c8a430;
+  --gold-light: #fff8e1;
+  --text: #1e2a38;
+  --text-soft: #4a5568;
+  --border: #dde3ec;
+  --bg: #f0f4f9;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Noto Sans SC', sans-serif; background: var(--bg); color: var(--text); font-size: 13px; line-height: 1.75; }
+
+.page { max-width: 860px; margin: 30px auto; background: white; border-radius: 14px; box-shadow: 0 6px 48px rgba(26,63,139,0.10); overflow: hidden; }
+
+/* ── HEADER ── */
+.header {
+  background: linear-gradient(135deg, #0f2542 0%, #1a4f8b 60%, #2563ae 100%);
+  padding: 42px 52px 36px; position: relative; overflow: hidden;
+}
+.header::before { content:''; position:absolute; top:-80px; right:-80px; width:280px; height:280px; border-radius:50%; background:rgba(255,255,255,0.04); }
+.header::after { content:''; position:absolute; bottom:-100px; left:40%; width:360px; height:360px; border-radius:50%; background:rgba(255,255,255,0.03); }
+.header-badge {
+  display:inline-block;
+  color:rgba(255,255,255,0.55);
+  font-size:11px; letter-spacing:2px;
+  margin-bottom:16px;
+}
+.header h1 { font-family:'Noto Serif SC',serif; font-size:26px; font-weight:700; color:white; letter-spacing:1px; margin-bottom:8px; }
+.header-sub { color:rgba(255,255,255,0.62); font-size:12.5px; letter-spacing:0.5px; }
+.student-tag {
+  display:inline-flex; align-items:center; gap:8px;
+  background:rgba(255,255,255,0.10); border:1px solid rgba(255,255,255,0.18);
+  border-radius:8px; padding:10px 18px; margin-top:22px;
+  color:rgba(255,255,255,0.90); font-size:12.5px;
+}
+.student-tag .st-item span { color:#f0d080; font-weight:600; }
+
+/* ── SECTION TITLE ── */
+.section-wrap { padding: 0 40px; }
+.section-title {
+  font-family:'Noto Serif SC',serif; font-size:15px; font-weight:700;
+  color:var(--navy-mid); border-left:4px solid var(--gold);
+  padding-left:12px; margin:36px 0 20px;
+}
+
+/* ── RECOMMEND BANNER ── */
+.recommend-banner {
+  margin: 28px 40px 0;
+  background: linear-gradient(135deg, #fff8e1, #fffdf5);
+  border: 1.5px solid rgba(200,164,48,0.4);
+  border-radius: 10px;
+  padding: 14px 20px;
+  display: flex; align-items: center; gap: 12px;
+}
+.rec-icon { font-size: 20px; }
+.rec-text { font-size: 12.5px; color: #7a5500; line-height: 1.7; }
+.rec-text strong { font-weight: 700; color: #5a3800; }
+
+/* ── PLAN CARDS ── */
+.plans-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; padding:0 40px; }
+
+.plan-card { border-radius:12px; overflow:hidden; border:1.5px solid var(--border); display:flex; flex-direction:column; }
+
+/* recommended highlight */
+.plan-card.recommended { border-color: var(--navy-mid); box-shadow: 0 4px 24px rgba(26,79,139,0.15); }
+
+.rec-badge {
+  background: var(--gold); color: white;
+  font-size: 10.5px; font-weight: 700; letter-spacing: 1px;
+  text-align: center; padding: 5px;
+}
+
+.plan-card.navy .card-head { background:linear-gradient(135deg,#0f2542,#1a4f8b); }
+.plan-card.green .card-head { background:linear-gradient(135deg,#0f3322,#1e6644); }
+.card-head { padding:22px 24px 18px; }
+.plan-label { font-size:10.5px; letter-spacing:2px; color:rgba(255,255,255,0.6); margin-bottom:4px; }
+.plan-name { font-family:'Noto Serif SC',serif; font-size:18px; font-weight:700; color:white; margin-bottom:6px; }
+.plan-tagline { font-size:11.5px; color:rgba(255,255,255,0.65); }
+
+.card-body { padding:20px 24px; flex:1; background:white; }
+
+/* schedule summary */
+.sched-box {
+  background: var(--bg); border-radius:8px; padding:12px 14px; margin-bottom:14px;
+  border-left: 3px solid;
+}
+.plan-card.navy .sched-box { border-left-color: var(--navy-mid); }
+.plan-card.green .sched-box { border-left-color: var(--green-mid); }
+.sched-title { font-size:11.5px; font-weight:700; margin-bottom:8px; }
+.plan-card.navy .sched-title { color: var(--navy-mid); }
+.plan-card.green .sched-title { color: var(--green-dark); }
+.sched-row { display:flex; justify-content:space-between; font-size:11.5px; color:var(--text-soft); margin-bottom:4px; }
+.sched-row span:last-child { font-weight:600; color:var(--text); }
+
+.day-rhythm {
+  display:flex; gap:6px; flex-wrap:wrap; margin-top:8px;
+}
+.day-block {
+  font-size:10.5px; padding:3px 10px; border-radius:6px; font-weight:500;
+}
+.plan-card.navy .day-block { background: var(--navy-pale); color: var(--navy-mid); border:1px solid var(--navy-light); }
+.plan-card.green .day-block.d2 { background: var(--green-pale); color: var(--green-dark); border:1px solid var(--green-light); }
+.plan-card.green .day-block.d3 { background: var(--gold-light); color: #7a5500; border:1px solid rgba(200,164,48,0.3); }
+
+/* subject tags */
+.subject-list { display:flex; flex-wrap:wrap; gap:5px; margin:10px 0; }
+.subject-tag { font-size:10.5px; padding:2px 9px; border-radius:10px; font-weight:500; }
+.plan-card.navy .subject-tag { background:var(--navy-light); color:var(--navy); }
+.plan-card.green .subject-tag { background:var(--green-light); color:var(--green-dark); }
+.subject-tag.eng { background:var(--gold-light); color:#7a5500; border:1px solid rgba(200,164,48,0.3); }
+
+/* hour row */
+.hour-row { display:flex; flex-wrap:wrap; gap:6px; margin:10px 0 8px; }
+.hour-item { font-size:11px; padding:3px 10px; border-radius:10px; background:white; border:1px solid var(--border); color:var(--text-soft); }
+.hour-item strong { font-weight:600; color:var(--text); }
+.badge-1v1 {
+  display:inline-block; font-size:10px; font-weight:700; letter-spacing:0.5px;
+  padding:2px 8px; border-radius:4px; background:#fff0c8; color:#8a6000;
+  border:1px solid rgba(200,164,48,0.4); margin-right:4px; vertical-align:middle;
+}
+
+/* pricing */
+.price-box { margin-top:16px; padding:14px 16px; border-radius:8px; border:1.5px dashed; }
+.plan-card.navy .price-box { border-color:var(--navy-light); background:var(--navy-pale); }
+.plan-card.green .price-box { border-color:var(--green-light); background:var(--green-pale); }
+.price-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:5px; font-size:11.5px; }
+.price-row .label { color:var(--text-soft); }
+.price-row .val { font-weight:600; color:var(--text); }
+.price-row .val.strike { text-decoration:line-through; color:#aaa; font-weight:400; }
+.price-final { display:flex; justify-content:space-between; align-items:baseline; margin-top:10px; padding-top:10px; border-top:1px solid var(--border); }
+.price-final .label { font-size:12px; font-weight:600; color:var(--text); }
+.price-final .amount { font-family:'Noto Serif SC',serif; font-size:22px; font-weight:700; }
+.plan-card.navy .price-final .amount { color:var(--navy-mid); }
+.plan-card.green .price-final .amount { color:var(--green-mid); }
+.price-final .save { font-size:10.5px; color:#c0392b; background:#fff0ee; padding:2px 8px; border-radius:4px; margin-left:8px; }
+
+/* ── HOURS DISTRIBUTION ── */
+.hours-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; padding:0 40px; }
+.hour-card { border-radius:8px; overflow:hidden; border:1px solid var(--border); text-align:center; }
+.hour-card-head { background:var(--navy-pale); padding:8px 6px; font-size:12px; font-weight:700; color:var(--navy-mid); }
+.hour-card-body { padding:10px 6px; }
+.hour-num { font-family:'Noto Serif SC',serif; font-size:22px; font-weight:700; color:var(--navy-mid); line-height:1.1; }
+.hour-unit { font-size:11px; color:var(--text-soft); }
+.hour-sessions { font-size:10.5px; color:#aaa; margin-top:2px; }
+
+/* ── SCHEDULE ── */
+.schedule-wrap { padding: 0 40px; }
+
+.sched-compare {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+}
+.sched-col { border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+.sched-col-head {
+  padding: 10px 16px; font-size: 12px; font-weight: 700;
+}
+.sched-col.navy .sched-col-head { background: var(--navy-pale); color: var(--navy-mid); }
+.sched-col.green .sched-col-head { background: var(--green-pale); color: var(--green-dark); }
+.sched-col-body { padding: 14px 16px; }
+
+.week-sample { margin-bottom: 12px; }
+.week-title { font-size: 11px; color: var(--text-soft); margin-bottom: 8px; font-weight: 600; }
+.day-row {
+  display: flex; align-items: flex-start; gap: 8px;
+  margin-bottom: 7px; font-size: 11.5px;
+}
+.day-label {
+  min-width: 28px; font-size: 10.5px; color: var(--text-soft);
+  padding-top: 2px; flex-shrink: 0;
+}
+.day-classes { display: flex; flex-wrap: wrap; gap: 4px; }
+.cls-tag { font-size: 10.5px; padding: 2px 8px; border-radius: 5px; }
+.cls-ig { background: var(--navy-pale); color: var(--navy-mid); border: 1px solid var(--navy-light); }
+.cls-eng { background: var(--gold-light); color: #7a5500; border: 1px solid rgba(200,164,48,0.3); }
+.cls-rest { background: #f5f5f5; color: #aaa; border: 1px solid #e8e8e8; }
+
+.sched-note {
+  font-size: 11px; color: var(--text-soft);
+  background: var(--bg); border-radius: 6px;
+  padding: 8px 10px; margin-top: 8px;
+  border-left: 2px solid var(--border);
+}
+.sched-col.navy .sched-note { border-left-color: var(--navy-mid); }
+.sched-col.green .sched-note { border-left-color: var(--gold); }
+
+/* ── COMPARISON TABLE ── */
+.cmp-wrap { padding: 0 40px; }
+.cmp-table { width:100%; border-collapse:collapse; border-radius:10px; overflow:hidden; border:1px solid var(--border); font-size:12px; }
+.cmp-table th { padding:11px 16px; text-align:center; font-weight:700; }
+.cmp-table th:first-child { background:#f7f8fa; color:var(--text-soft); text-align:left; }
+.cmp-table th.navy-th { background:var(--navy-pale); color:var(--navy-mid); }
+.cmp-table th.green-th { background:var(--green-pale); color:var(--green-dark); }
+.cmp-table td { padding:10px 16px; border-top:1px solid var(--border); }
+.cmp-table td:first-child { color:var(--text-soft); }
+.cmp-table td:not(:first-child) { text-align:center; font-weight:500; }
+.cmp-table tr:nth-child(even) td { background:#fafbfc; }
+.check { color:#27ae60; font-size:14px; }
+.cross { color:#bbb; font-size:14px; }
+.highlight-row td { background:var(--gold-light) !important; }
+.highlight-row td:first-child { font-weight:600; color:var(--text); }
+.navy-val { color: var(--navy-mid); font-weight: 700 !important; }
+.green-val { color: var(--green-mid); font-weight: 600 !important; }
+
+/* ── ADVISOR ── */
+.advisor-wrap { padding: 0 40px 40px; }
+.advisor-box {
+  background:linear-gradient(135deg,#f9f4e8,#fff8e8);
+  border:1.5px solid rgba(200,164,48,0.35);
+  border-radius:12px; padding:24px 28px;
+}
+.advisor-title {
+  font-family:'Noto Serif SC',serif; font-size:14px; font-weight:700;
+  color:#7a5500; margin-bottom:14px; display:flex; align-items:center; gap:8px;
+}
+.advisor-text { font-size:12.5px; color:var(--text-soft); line-height:1.9; }
+.advisor-text strong { color:var(--text); font-weight:600; }
+.advisor-highlight {
+  margin-top:14px; padding:10px 14px; background:white; border-radius:8px;
+  border-left:3px solid var(--gold); font-size:12px; color:var(--text-soft);
+}
+
+/* ── FOOTER ── */
+.footer { background:#0f2542; padding:22px 40px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+.footer-brand { font-family:'Noto Serif SC',serif; font-size:14px; color:rgba(255,255,255,0.9); font-weight:600; }
+.footer-sub { font-size:11px; color:rgba(255,255,255,0.45); margin-top:2px; }
+.footer-contact { text-align:right; }
+.footer-contact .name { font-size:13px; color:white; font-weight:400; }
+.footer-contact .phone { font-size:12px; color:rgba(255,255,255,0.65); margin-top:2px; }
+
+.divider { height:1px; background:var(--border); margin:4px 40px 0; }
+
+@media (max-width: 640px) {
+  .page { margin: 0; border-radius: 0; }
+  .header { padding: 28px 20px 24px; }
+  .header h1 { font-size: 20px; }
+  .header-sub { font-size: 11.5px; }
+  .student-tag { flex-direction: column; align-items: flex-start; gap: 4px; padding: 10px 14px; font-size: 11.5px; }
+  .st-sep { display: none; }
+  .section-wrap { padding: 0 16px; }
+  .section-title { margin: 24px 0 14px; font-size: 13.5px; }
+  .recommend-banner { margin: 16px 16px 0; padding: 12px 14px; }
+  .plans-grid { grid-template-columns: 1fr; padding: 0 16px; gap: 14px; }
+  .hours-grid { grid-template-columns: repeat(3, 1fr); padding: 0 16px; gap: 8px; }
+  .hours-grid .hour-card:nth-child(4),
+  .hours-grid .hour-card:nth-child(5) { grid-column: span 1; }
+  .hours-grid { grid-template-columns: repeat(3, 1fr); }
+  .schedule-wrap { padding: 0 16px; }
+  .sched-compare { grid-template-columns: 1fr; }
+  .cmp-wrap { padding: 0 16px; overflow-x: auto; }
+  .cmp-table { font-size: 11px; min-width: 420px; }
+  .cmp-table th, .cmp-table td { padding: 8px 10px; }
+  .advisor-wrap { padding: 0 16px 28px; }
+  .advisor-box { padding: 18px 16px; }
+  .footer { padding: 18px 20px; flex-direction: column; align-items: flex-start; gap: 8px; }
+  .footer-contact { text-align: left; }
+  .divider { margin: 4px 16px 0; }
+  .card-body { padding: 16px; }
+  .price-final .amount { font-size: 18px; }
+  .hour-num { font-size: 18px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-badge">新航道成都学校 · NEW CHANNEL CHENGDU</div>
+    <h1>IGCSE 衔接强化 · 暑假课程规划</h1>
+    <div class="header-sub">针对马来西亚 CAIE 体系 / 即将进入 IGCSE 第一年 / 暑假集中补强</div>
+    <div class="student-tag">
+      <span class="st-item">学生现状：<span>9年级 / 各科约C水平</span></span>
+      <span class="st-sep">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+      <span class="st-item">目标：<span>顺利衔接 IGCSE 1 阶段课堂</span></span>
+      <span class="st-sep">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+      <span class="st-item">上课时间：<span>7月19日 — 8月31日</span></span>
+    </div>
+  </div>
+
+
+
+  <!-- PLAN CARDS -->
+  <div class="section-wrap">
+    <div class="section-title">两种课程方案</div>
+  </div>
+
+  <div class="plans-grid">
+
+    <!-- PLAN A (RECOMMENDED) -->
+    <div class="plan-card navy recommended">
+      <div class="card-head" style="min-height:110px;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+          <div class="plan-label">方案一</div>
+          <div style="background:var(--gold);color:white;font-size:10px;font-weight:700;letter-spacing:1px;padding:3px 10px;border-radius:10px;">★ Grace 推荐</div>
+        </div>
+        <div class="plan-name">IG 学科专项突破</div>
+        <div class="plan-tagline">集中精力，五科全程混排推进</div>
+      </div>
+      <div class="card-body">
+
+        <div class="sched-box">
+          <div class="sched-title">排课节奏</div>
+          <div class="sched-row"><span>上课时间</span><span>7月19日 — 8月31日</span></div>
+          <div class="sched-row"><span>有效上课日</span><span>约38天（周日休息）</span></div>
+          <div class="sched-row"><span>每日节次</span><span>固定 2 节课</span></div>
+          <div class="sched-row"><span>总节次</span><span>67节 / 100小时</span></div>
+          <div class="day-rhythm">
+            <span class="day-block">每天 2 节 · 节奏稳定</span>
+            <span class="day-block">五科每周全覆盖</span>
+          </div>
+        </div>
+
+        <div class="subject-list">
+          <span class="subject-tag">IG 数学</span>
+          <span class="subject-tag">IG 物理</span>
+          <span class="subject-tag">IG 化学</span>
+          <span class="subject-tag">IG 生物</span>
+          <span class="subject-tag">IG 经济</span>
+        </div>
+
+        <div class="hour-row">
+          <span class="hour-item"><span class="badge-1v1">1v1</span> <strong>100</strong> 小时 · 五科</span>
+          <span class="hour-item">每节 1.5 小时</span>
+        </div>
+
+        <div class="price-box">
+          <div class="price-row"><span class="label">1对1 单价</span><span class="val">580元 / 小时</span></div>
+          <div class="price-row"><span class="label">原价</span><span class="val strike">58,000元</span></div>
+          <div class="price-final">
+            <span class="label">课包优惠价</span>
+            <div style="display:flex;align-items:baseline;gap:6px">
+              <span class="amount">48,000元</span>
+              <span class="save">省 10,000</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PLAN B -->
+    <div class="plan-card green">
+      <div class="card-head" style="min-height:110px;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+          <div class="plan-label">方案二</div>
+          <div style="font-size:10px;padding:3px 10px;opacity:0;">占位</div>
+        </div>
+        <div class="plan-name">英语读写 + 学科全面补强</div>
+        <div class="plan-tagline">英语学科双线并进，强度较高</div>
+      </div>
+      <div class="card-body">
+
+        <div class="sched-box">
+          <div class="sched-title">排课节奏</div>
+          <div class="sched-row"><span>上课时间</span><span>7月19日 — 8月31日</span></div>
+          <div class="sched-row"><span>有效上课日</span><span>约38天（周日休息）</span></div>
+          <div class="sched-row"><span>每日节次</span><span>部分2节 / 部分3节</span></div>
+          <div class="sched-row"><span>总节次</span><span>87节 / 130小时</span></div>
+          <div class="day-rhythm">
+            <span class="day-block d2">约27天 · 2节课</span>
+            <span class="day-block d3">约11天 · 3节课（含英语）</span>
+          </div>
+        </div>
+
+        <div class="subject-list">
+          <span class="subject-tag eng">留学预备 L3 读写</span>
+          <span class="subject-tag">IG 数学</span>
+          <span class="subject-tag">IG 物理</span>
+          <span class="subject-tag">IG 化学</span>
+          <span class="subject-tag">IG 生物</span>
+          <span class="subject-tag">IG 经济</span>
+        </div>
+
+        <div class="hour-row">
+          <span class="hour-item"><span class="badge-1v1">1v1</span> <strong>100</strong>h IG学科</span>
+          <span class="hour-item"><span class="badge-1v1">1v1</span> <strong>30</strong>h 英语读写</span>
+        </div>
+
+        <div class="price-box">
+          <div class="price-row"><span class="label">L3 读写 1v1（30h）原价</span><span class="val strike">13,500元</span></div>
+          <div class="price-row"><span class="label">L3 读写 1v1 组合优惠</span><span class="val">11,000元</span></div>
+          <div class="price-row"><span class="label">IG 课包（100h）</span><span class="val">48,000元</span></div>
+          <div class="price-final">
+            <span class="label">组合总价</span>
+            <div style="display:flex;align-items:baseline;gap:6px">
+              <span class="amount">59,000元</span>
+              <span class="save">省 12,500</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- HOURS DISTRIBUTION -->
+  <div class="section-wrap">
+    <div class="section-title">IG 课包 · 五科课时分配（100小时）</div>
+  </div>
+  <div class="hours-grid">
+    <div class="hour-card">
+      <div class="hour-card-head">IG 数学</div>
+      <div class="hour-card-body">
+        <div class="hour-num">25</div>
+        <div class="hour-unit">小时</div>
+        <div class="hour-sessions">每周必排</div>
+      </div>
+    </div>
+    <div class="hour-card">
+      <div class="hour-card-head">IG 物理</div>
+      <div class="hour-card-body">
+        <div class="hour-num">19.5</div>
+        <div class="hour-unit">小时</div>
+        <div class="hour-sessions">13 节</div>
+      </div>
+    </div>
+    <div class="hour-card">
+      <div class="hour-card-head">IG 化学</div>
+      <div class="hour-card-body">
+        <div class="hour-num">19.5</div>
+        <div class="hour-unit">小时</div>
+        <div class="hour-sessions">13 节</div>
+      </div>
+    </div>
+    <div class="hour-card">
+      <div class="hour-card-head">IG 生物</div>
+      <div class="hour-card-body">
+        <div class="hour-num">18</div>
+        <div class="hour-unit">小时</div>
+        <div class="hour-sessions">12 节</div>
+      </div>
+    </div>
+    <div class="hour-card">
+      <div class="hour-card-head">IG 经济</div>
+      <div class="hour-card-body">
+        <div class="hour-num">18</div>
+        <div class="hour-unit">小时</div>
+        <div class="hour-sessions">12 节</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEEKLY SCHEDULE -->
+  <div class="section-wrap">
+    <div class="section-title">每周排课说明</div>
+  </div>
+  <div class="schedule-wrap">
+    <div class="sched-col navy" style="border-radius:10px; overflow:hidden; border:1px solid var(--border);">
+      <div class="sched-col-head">方案一 & 方案二 · IG 学科排课节奏</div>
+      <div class="sched-col-body">
+        <div style="padding: 8px 0 16px;">
+          <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px;">
+            <span class="cls-tag cls-ig">IG 数学</span>
+            <span class="cls-tag cls-ig">IG 物理</span>
+            <span class="cls-tag cls-ig">IG 化学</span>
+            <span class="cls-tag cls-ig">IG 生物</span>
+            <span class="cls-tag cls-ig">IG 经济</span>
+          </div>
+          <div style="font-size:12px; color:var(--text-soft); line-height:1.9;">
+            五科<strong style="color:var(--navy-mid)">全程混排</strong>，根据教务统筹及老师排班灵活安排，每周五科均有覆盖。<br>
+            方案一每天固定 <strong style="color:var(--navy-mid)">2 节课</strong>，节奏稳定，不易疲劳。<br>
+            方案二在英语课安排日为 <strong style="color:#8a6000">3 节课</strong>，其余天为 2 节课。<br>
+            周日休息。
+          </div>
+        </div>
+        <div class="sched-note">每节 1.5 小时 · 周日休息 · 约 38 个上课日</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- COMPARISON TABLE -->
+  <div class="section-wrap">
+    <div class="section-title">方案对比一览</div>
+  </div>
+  <div class="cmp-wrap">
+    <table class="cmp-table">
+      <thead>
+        <tr>
+          <th>对比维度</th>
+          <th class="navy-th">方案一 ★Grace推荐</th>
+          <th class="green-th">方案二</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>IG 学科课时</td>
+          <td class="navy-val">100 小时（5科）</td>
+          <td>100 小时（5科）</td>
+        </tr>
+        <tr>
+          <td>英语读写强化</td>
+          <td><span class="cross">—</span></td>
+          <td><span class="check">✓</span> L3读写 1v1 · 30小时</td>
+        </tr>
+        <tr>
+          <td>总课时</td>
+          <td class="navy-val">100 小时</td>
+          <td>130 小时</td>
+        </tr>
+        <tr>
+          <td>每日上课节次</td>
+          <td class="navy-val">固定 2 节 · 节奏稳定</td>
+          <td>2节 或 3节（英语日）</td>
+        </tr>
+        <tr>
+          <td>暑假学习强度</td>
+          <td class="navy-val">适中 · 可持续</td>
+          <td>较高 · 需要较强自律</td>
+        </tr>
+        <tr>
+          <td>上课时间跨度</td>
+          <td>7月19日 — 8月31日</td>
+          <td>7月19日 — 8月31日</td>
+        </tr>
+        <tr class="highlight-row">
+          <td>总价</td>
+          <td class="navy-val">48,000 元</td>
+          <td>59,000 元</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ADVISOR -->
+  <div class="section-wrap">
+    <div class="section-title">顾问建议</div>
+  </div>
+  <div class="advisor-wrap">
+    <div class="advisor-box">
+      <div class="advisor-title">
+        <span>💡</span> 个人规划建议
+      </div>
+      <div class="advisor-text">
+        综合孩子的情况，Grace 的建议是<strong>优先选择方案一</strong>。核心理由有两点：<br><br>
+        第一，孩子已在马来西亚全英文学校就读，每天听讲、开口、用英文完成作业，听说能力有持续的自然输入，这部分不需要额外花时间。<strong>真正需要专项训练的是学术英语的阅读理解和书面表达</strong>——这也是IGCSE各科答题最直接影响卷面得分的能力，却在马来西亚日常课堂里不一定被系统训练过。所以如果英语基础确实有短板，方案二选择补读写而非听说，是有针对性的；但如果书面表达尚可，暑假6周更应该集中在<strong>学科知识的系统性补强</strong>上。<br><br>
+        第二，每天3节课的安排对于准高一的学生来说强度偏高，尤其是暑假的学习状态相对松弛。方案一每天固定2节、节奏平稳，<strong>不容易在中途产生疲倦和抵触情绪</strong>，全程坚持下来的概率更高，实际效果也更有保障。<br><br>
+        如果测评后发现孩子的英文书面表达存在明显短板，方案二是完全合理的选择，我们可以根据测评结果再做判断。
+      </div>
+      <div class="advisor-highlight">
+        📌 两个方案的 IG 学科课时、内容与排课密度完全一致，区别只在于方案二额外增加了英语读写模块，以及随之带来的部分高强度日。
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div>
+      <div class="footer-brand">新航道成都学校</div>
+      <div class="footer-sub">锦秋学院 · IGCSE / A-Level 专项辅导</div>
+    </div>
+    <div class="footer-contact">
+      <div class="name" style="font-size:11px;color:rgba(255,255,255,0.65);font-weight:400;">如有疑问请联系</div>
+      <div class="name" style="margin-top:3px;">课程主管 Grace &nbsp; 18512820890</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
