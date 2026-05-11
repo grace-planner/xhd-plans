@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>雅思全程学习方案 · 张晨欣</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --brand:       #1a4f8b;
+  --brand-mid:   #2563a8;
+  --brand-light: #dbeafe;
+  --brand-pale:  #eff6ff;
+  --gold:        #c8960a;
+  --gold-bg:     #fefce8;
+  --gold-border: #fde68a;
+  --green:       #16a34a;
+  --green-bg:    #f0fdf4;
+  --text:        #1e2533;
+  --muted:       #64748b;
+  --border:      #e2e8f0;
+  --gray-bg:     #f8fafc;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Noto Sans SC', sans-serif;
+  background: #e8edf5;
+  color: var(--text);
+  font-size: 13.5px;
+  line-height: 1.7;
+}
+
+/* ── 主容器 ── */
+.page {
+  max-width: 780px;
+  margin: 32px auto;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 6px 48px rgba(26,79,139,0.13);
+  overflow: hidden;
+}
+
+/* ── 顶部 Banner ── */
+.banner {
+  background: linear-gradient(135deg, var(--brand) 0%, #1e6bb8 60%, #2a7fd4 100%);
+  padding: 44px 48px 36px;
+  position: relative;
+  overflow: hidden;
+}
+.banner::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+}
+.banner::after {
+  content: '';
+  position: absolute;
+  bottom: -100px; left: 20%;
+  width: 380px; height: 380px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+}
+.school-tag {
+  font-size: 11.5px;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+.banner-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+}
+.banner-sub {
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 2px;
+  margin-bottom: 28px;
+}
+.banner-meta {
+  display: flex;
+  gap: 36px;
+  flex-wrap: wrap;
+}
+.meta-item { display: flex; flex-direction: column; gap: 3px; }
+.meta-label { font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 1px; }
+.meta-value { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.92); }
+
+/* ── 内容区 ── */
+.body { padding: 44px 48px 52px; }
+.section { margin-bottom: 44px; }
+.section-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--brand);
+  border-left: 4px solid var(--brand);
+  padding: 6px 0 6px 14px;
+  margin-bottom: 18px;
+  letter-spacing: 0.5px;
+}
+.section-title span {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 10.5px;
+  font-weight: 400;
+  color: var(--muted);
+  margin-left: 8px;
+  letter-spacing: 1px;
+}
+
+/* ── 学情简报 ── */
+.score-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.score-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 12px;
+  background: var(--gray-bg);
+  text-align: center;
+}
+.score-card.strong { border-color: #86efac; background: #f0fdf4; }
+.score-card.weak   { border-color: #fca5a5; background: #fff1f2; }
+.sc-label { font-size: 11px; color: var(--muted); margin-bottom: 6px; }
+.sc-val {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1;
+}
+.sc-val.g { color: var(--green); }
+.sc-val.r { color: #dc2626; }
+.sc-val sub { font-size: 11px; font-weight: 400; color: var(--muted); }
+.sc-rate { font-size: 10.5px; color: var(--muted); margin-top: 4px; }
+.rate-bar { height: 3px; border-radius: 2px; background: #e2e8f0; margin-top: 8px; overflow: hidden; }
+.rate-fill { height: 100%; border-radius: 2px; }
+
+/* ── 学习路径 ── */
+.path-block {
+  background: var(--brand-pale);
+  border: 1px solid var(--brand-light);
+  border-radius: 12px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.path-label { font-size: 11px; color: var(--muted); letter-spacing: 1px; white-space: nowrap; }
+.path-steps { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.path-step {
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 20px;
+}
+.step-active { background: var(--brand); color: white; }
+.step-next   { background: var(--brand-light); color: var(--brand); }
+.step-goal   { background: var(--green); color: white; font-size: 13.5px; }
+.path-arrow  { color: var(--brand-mid); font-size: 16px; line-height: 1; }
+
+/* ── 早鸟价格框 ── */
+.earlybird-box {
+  background: linear-gradient(135deg, #fffbeb 0%, #fef9c3 100%);
+  border: 2px solid var(--gold-border);
+  border-radius: 14px;
+  padding: 28px 32px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.earlybird-box::before {
+  content: '🌟 暑假早鸟特惠';
+  position: absolute;
+  top: 0; right: 0;
+  background: var(--gold);
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 16px;
+  border-bottom-left-radius: 10px;
+  letter-spacing: 0.5px;
+}
+.price-main {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.price-label { font-size: 13px; color: #92400e; font-weight: 500; }
+.price-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: #b45309;
+  line-height: 1;
+}
+.price-unit { font-size: 15px; color: #92400e; font-weight: 500; }
+.price-desc { font-size: 12px; color: #a16207; margin-top: 6px; }
+.price-note {
+  margin-top: 14px;
+  padding: 10px 16px;
+  background: rgba(255,255,255,0.7);
+  border-radius: 8px;
+  font-size: 12px;
+  color: #78350f;
+  line-height: 1.8;
+}
+
+/* ── 课程总览卡 ── */
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.ov-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.ov-head {
+  background: var(--brand);
+  color: white;
+  padding: 12px 16px;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+}
+.ov-body { padding: 14px 16px; background: var(--gray-bg); }
+.ov-row { display: flex; justify-content: space-between; font-size: 12px; padding: 3px 0; border-bottom: 1px solid #f0f0f0; }
+.ov-row:last-child { border-bottom: none; }
+.ov-key { color: var(--muted); }
+.ov-val { font-weight: 600; color: var(--text); }
+
+/* ── 增值服务 ── */
+.value-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.value-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--gray-bg);
+  font-size: 12.5px;
+}
+.vi-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.vi-title { font-weight: 600; color: var(--text); font-size: 13px; }
+.vi-desc  { font-size: 11.5px; color: var(--muted); line-height: 1.6; }
+
+/* ── 保分承诺 ── */
+.guarantee-box {
+  border: 1.5px solid #86efac;
+  border-radius: 12px;
+  padding: 20px 24px;
+  background: var(--green-bg);
+}
+.guarantee-box .g-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: #15803d;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.guarantee-box ul { padding-left: 20px; }
+.guarantee-box li { font-size: 12.5px; color: #166534; margin-bottom: 5px; line-height: 1.65; }
+
+/* ── 顾问建议 ── */
+.advisor-box {
+  background: var(--brand-pale);
+  border: 1.5px solid var(--brand-light);
+  border-radius: 12px;
+  padding: 22px 26px;
+}
+.advisor-box .a-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--brand);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.advisor-box p {
+  font-size: 12.5px;
+  color: #1e3a5f;
+  line-height: 1.85;
+  margin-bottom: 10px;
+}
+.advisor-box p:last-child { margin-bottom: 0; }
+
+/* ── 时间紧迫提示 ── */
+.urgency-bar {
+  background: linear-gradient(90deg, #fef2f2, #fff7ed);
+  border: 1px solid #fca5a5;
+  border-radius: 10px;
+  padding: 14px 20px;
+  font-size: 12.5px;
+  color: #7f1d1d;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.urgency-bar span { font-size: 18px; }
+
+/* ── Footer ── */
+.footer {
+  border-top: 1px solid var(--border);
+  background: var(--gray-bg);
+  padding: 16px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  color: var(--muted);
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* ── 打印按钮 ── */
+.print-btn {
+  position: fixed;
+  bottom: 28px; right: 28px;
+  background: var(--brand);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 11px 22px;
+  font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(26,79,139,0.35);
+  letter-spacing: 0.5px;
+  transition: transform 0.15s, box-shadow 0.15s;
+  z-index: 100;
+}
+.print-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(26,79,139,0.45); }
+
+/* ── 响应式 ── */
+@media (max-width: 600px) {
+  .banner { padding: 32px 24px 28px; }
+  .body { padding: 28px 20px 36px; }
+  .score-row { grid-template-columns: repeat(2, 1fr); }
+  .overview-grid { grid-template-columns: 1fr; }
+  .value-grid { grid-template-columns: 1fr; }
+  .footer { padding: 16px 20px; }
+  .print-btn { display: none; }
+}
+@media print {
+  body { background: white; }
+  .page { margin: 0; border-radius: 0; box-shadow: none; max-width: 100%; }
+  .print-btn { display: none; }
+  .section { break-inside: avoid; }
+  .banner, .earlybird-box, .ov-head, .guarantee-box, .advisor-box {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Banner -->
+  <div class="banner">
+    <div class="school-tag">新航道成都学校 · 课程规划方案</div>
+    <div class="banner-title">雅思全程学习规划</div>
+    <div class="banner-sub">IELTS FULL PROGRAMME · PERSONALISED PLAN</div>
+    <div class="banner-meta">
+      <div class="meta-item">
+        <span class="meta-label">学员姓名</span>
+        <span class="meta-value">张晨欣</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">入学测试得分</span>
+        <span class="meta-value">58 / 80 分</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">目标成绩</span>
+        <span class="meta-value">IELTS 6.5+</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">方案日期</span>
+        <span class="meta-value">2026 / 05 / 11</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <!-- 学情快览 -->
+    <div class="section">
+      <div class="section-title">入学测试学情快览 <span>PLACEMENT OVERVIEW</span></div>
+
+      <div class="score-row">
+        <div class="score-card strong">
+          <div class="sc-label">词汇</div>
+          <div class="sc-val g">16<sub>/20</sub></div>
+          <div class="sc-rate">80% · 表现优秀</div>
+          <div class="rate-bar"><div class="rate-fill" style="width:80%;background:#16a34a"></div></div>
+        </div>
+        <div class="score-card weak">
+          <div class="sc-label">语法</div>
+          <div class="sc-val r">10<sub>/20</sub></div>
+          <div class="sc-rate">50% · 核心突破点</div>
+          <div class="rate-bar"><div class="rate-fill" style="width:50%;background:#dc2626"></div></div>
+        </div>
+        <div class="score-card strong">
+          <div class="sc-label">阅读</div>
+          <div class="sc-val g">16<sub>/20</sub></div>
+          <div class="sc-rate">80% · 表现优秀</div>
+          <div class="rate-bar"><div class="rate-fill" style="width:80%;background:#16a34a"></div></div>
+        </div>
+        <div class="score-card strong">
+          <div class="sc-label">听力</div>
+          <div class="sc-val g">16<sub>/20</sub></div>
+          <div class="sc-rate">80% · 表现优秀</div>
+          <div class="rate-bar"><div class="rate-fill" style="width:80%;background:#16a34a"></div></div>
+        </div>
+      </div>
+
+      <!-- 学习路径 -->
+      <div class="path-block">
+        <div class="path-label">规划路径</div>
+        <div class="path-steps">
+          <span class="path-step step-active">精讲段 B</span>
+          <span class="path-arrow">→</span>
+          <span class="path-step step-next">强化段 C</span>
+          <span class="path-arrow">→</span>
+          <span class="path-step step-next">冲刺段 D</span>
+          <span class="path-arrow">→</span>
+          <span class="path-step step-goal">目标 IELTS 6.5+</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 价格 -->
+    <div class="section">
+      <div class="section-title">暑期早鸟专项优惠 <span>SUMMER EARLY BIRD</span></div>
+
+      <div class="urgency-bar">
+        <span>⏰</span>
+        <div>暑期班名额有限，现阶段锁定早鸟价格，<strong>后续开课价格将统一调整</strong>，提前报名即可锁定当前优惠，避免涨价。</div>
+      </div>
+
+      <div class="earlybird-box">
+        <div class="price-main">
+          <div class="price-label">雅思全程三阶段 · 早鸟价</div>
+          <div class="price-num">25,760</div>
+          <div class="price-unit">元</div>
+        </div>
+        <div class="price-desc">精讲段 + 强化段 + 冲刺段 · 156 课时完整体系 · 8 折优惠</div>
+        <div class="price-note">
+          ✦ 三阶段打包学习，一次规划到考场，省心高效<br>
+          ✦ 全程报名即享 <strong>保6.5分</strong> 承诺（含重修权益）<br>
+          ✦ 此优惠价格为阶段性早鸟政策，暑假开班后恢复统一定价
+        </div>
+      </div>
+    </div>
+
+    <!-- 课程总览 -->
+    <div class="section">
+      <div class="section-title">全程课程总览 <span>PROGRAMME OVERVIEW</span></div>
+
+      <div class="overview-grid">
+        <div class="ov-card">
+          <div class="ov-head">精讲段（B 段）</div>
+          <div class="ov-body">
+            <div class="ov-row"><span class="ov-key">课程课次</span><span class="ov-val">40 次课</span></div>
+            <div class="ov-row"><span class="ov-key">课时总量</span><span class="ov-val">60 小时</span></div>
+            <div class="ov-row"><span class="ov-key">班型规模</span><span class="ov-val">3–8 人精品班</span></div>
+            <div class="ov-row"><span class="ov-key">核心重点</span><span class="ov-val">四科题型基础解法</span></div>
+          </div>
+        </div>
+        <div class="ov-card">
+          <div class="ov-head">强化段（C 段）</div>
+          <div class="ov-body">
+            <div class="ov-row"><span class="ov-key">课程课次</span><span class="ov-val">40 次课</span></div>
+            <div class="ov-row"><span class="ov-key">课时总量</span><span class="ov-val">60 小时</span></div>
+            <div class="ov-row"><span class="ov-key">班型规模</span><span class="ov-val">3–8 人精品班</span></div>
+            <div class="ov-row"><span class="ov-key">核心重点</span><span class="ov-val">进阶题型与高分策略</span></div>
+          </div>
+        </div>
+        <div class="ov-card">
+          <div class="ov-head">冲刺段（D 段）</div>
+          <div class="ov-body">
+            <div class="ov-row"><span class="ov-key">课程课次</span><span class="ov-val">24 次课</span></div>
+            <div class="ov-row"><span class="ov-key">课时总量</span><span class="ov-val">36 小时</span></div>
+            <div class="ov-row"><span class="ov-key">班型规模</span><span class="ov-val">3–8 人精品班</span></div>
+            <div class="ov-row"><span class="ov-key">核心重点</span><span class="ov-val">最新机经 · 考前预测</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 汇总数字 -->
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;">
+        <div style="text-align:center;padding:16px;background:var(--brand-pale);border:1px solid var(--brand-light);border-radius:10px;">
+          <div style="font-family:'Noto Serif SC',serif;font-size:28px;font-weight:700;color:var(--brand);line-height:1;">104</div>
+          <div style="font-size:11.5px;color:var(--muted);margin-top:4px;">次课 · 全程合计</div>
+        </div>
+        <div style="text-align:center;padding:16px;background:var(--brand-pale);border:1px solid var(--brand-light);border-radius:10px;">
+          <div style="font-family:'Noto Serif SC',serif;font-size:28px;font-weight:700;color:var(--brand);line-height:1;">156</div>
+          <div style="font-size:11.5px;color:var(--muted);margin-top:4px;">小时 · 正课课时</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 增值服务 -->
+    <div class="section">
+      <div class="section-title">全程配套增值服务 <span>INCLUDED BENEFITS</span></div>
+      <div class="value-grid">
+        <div class="value-item">
+          <div class="vi-icon">🤖</div>
+          <div>
+            <div class="vi-title">AI 智能批改 · 随时提交</div>
+            <div class="vi-desc">写作口语作业提交后即获 AI 精准评分与反馈，不限次数，学了马上验证</div>
+          </div>
+        </div>
+        <div class="value-item">
+          <div class="vi-icon">📚</div>
+          <div>
+            <div class="vi-title">剑桥雅思 + 九分达人完整题库</div>
+            <div class="vi-desc">覆盖剑雅历年真题及九分达人全系列，海量素材随学随练，不愁没题做</div>
+          </div>
+        </div>
+        <div class="value-item">
+          <div class="vi-icon">📊</div>
+          <div>
+            <div class="vi-title">全程三次阶段测试</div>
+            <div class="vi-desc">入学测试 + 课中测试 + 结课测试，实时追踪学习进度</div>
+          </div>
+        </div>
+        <div class="value-item">
+          <div class="vi-icon">🎯</div>
+          <div>
+            <div class="vi-title">每周雅思考情 & 预测</div>
+            <div class="vi-desc">实时更新考场高频题型，提前布局热点话题素材</div>
+          </div>
+        </div>
+        <div class="value-item">
+          <div class="vi-icon">🏅</div>
+          <div>
+            <div class="vi-title">IDP 官方指定报名点 · 代报享补贴</div>
+            <div class="vi-desc">新航道成都学校为 2026 年度 IDP 雅思官方指定报名点（推荐码 XH510101），通过我们报考 IDP 雅思机考立享 <strong>20 元补贴</strong>，省心又省钱</div>
+          </div>
+        </div>
+        <div class="value-item">
+          <div class="vi-icon">🎓</div>
+          <div>
+            <div class="vi-title">雅思全真模拟考试 · 随时可约</div>
+            <div class="vi-desc">全程不限次数预约模拟考，还原真实考场节奏，提前适应考试压力</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 保分承诺 -->
+    <div class="section">
+      <div class="section-title">成绩保障 & 重修权益 <span>SCORE GUARANTEE</span></div>
+      <div class="guarantee-box">
+        <div class="g-title">✦ 报名全程三阶段（精讲 + 强化 + 冲刺）即享</div>
+        <ul>
+          <li><strong>保 IELTS 6.5 分</strong>——全程报名自动激活，无需额外达到入学成绩要求</li>
+          <li><strong>重修权益</strong>——结课后 3 个月内官考，未达对应目标分即可重修强化段和冲刺段</li>
+          <li><strong>重修有效期</strong>——结课后一年内均可使用重修机会，充分保障学习效果</li>
+          <li>所有保分学员结课后 3 个月内参加雅思官考，方可启动重修申请</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 顾问建议 -->
+    <div class="section">
+      <div class="section-title">课程顾问说明 <span>ADVISOR NOTE</span></div>
+      <div class="advisor-box">
+        <div class="a-title">✦ Grace 的课程建议</div>
+        <p>
+          根据入学测试结果，张晨欣的听力、阅读、词汇三项均达到80%优秀水平，英语基础具备一定竞争力。但雅思是一门考试，有自己独特的题型逻辑、出题套路和答题策略——精讲段正是系统建立这套雅思解题方法论的起点，覆盖听力、阅读、写作、口语四科的常考题型逐一精讲，让每道题都有章可循。没有经过体系化的题型训练，仅靠英语底子上场，分数往往难以稳定兑现。
+        </p>
+        <p>
+          雅思备考是一个连贯积累的过程，精讲打基础、强化提分段、冲刺攻机经，三个阶段环环相扣、逐步递进。一次性完成全程规划，可以确保老师对学生的持续跟踪，避免中途换班或衔接断层带来的学习损耗，也是触发保6.5分承诺的必要条件。
+        </p>
+
+      </div>
+    </div>
+
+  </div><!-- end body -->
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>新航道成都学校 | 锦秋学院 · IGCSE/A-Level专项辅导</span>
+    <span>如有疑问请联系 · 课程主管 Grace &nbsp; 18512820890</span>
+  </div>
+
+</div><!-- end page -->
+
+<button class="print-btn" onclick="window.print()">🖨 打印 / 导出 PDF</button>
+
+</body>
+</html>
