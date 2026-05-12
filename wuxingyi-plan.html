@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>雅思个性化课程方案 · 吴星熠</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Noto Serif SC', 'SimSun', serif;
+    background: #f5f7fa;
+    color: #1a1a2e;
+    padding: 24px 16px 48px;
+  }
+
+  .page-wrap { max-width: 760px; margin: 0 auto; }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #1a4f8b 0%, #0d3060 100%);
+    border-radius: 16px;
+    padding: 36px 32px 28px;
+    color: #fff;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    right: -40px; top: -40px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    right: 40px; bottom: -60px;
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+  .header-school {
+    font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+    font-size: 13px;
+    opacity: 0.7;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-family: 'Noto Serif SC', 'SimSun', serif;
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    line-height: 1.3;
+    letter-spacing: 1px;
+  }
+  .header-sub {
+    font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+    font-size: 12px;
+    opacity: 0.65;
+    letter-spacing: 3px;
+    margin-bottom: 0;
+  }
+  .header-meta {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .meta-label { font-size: 11px; opacity: 0.65; letter-spacing: 0.5px; }
+  .meta-value { font-size: 15px; font-weight: 600; }
+
+  /* Section */
+  .section {
+    background: #fff;
+    border-radius: 14px;
+    padding: 28px 28px 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px rgba(26,79,139,0.07);
+  }
+  .section-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1a4f8b;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e8eef7;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #1a4f8b;
+    display: inline-block;
+  }
+
+  /* Analysis */
+  .analysis-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .analysis-card {
+    background: #f0f5fb;
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .analysis-card .label {
+    font-size: 12px;
+    color: #6a7f9a;
+    margin-bottom: 4px;
+  }
+  .analysis-card .value {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1a4f8b;
+  }
+  .analysis-card .note {
+    font-size: 12px;
+    color: #8a9bb0;
+    margin-top: 2px;
+  }
+  .analysis-remark {
+    background: #fff8e8;
+    border-left: 3px solid #f0a500;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: #5a4a1a;
+    line-height: 1.8;
+  }
+
+  /* Hour cards */
+  .hour-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .hour-card {
+    border-radius: 10px;
+    padding: 16px 12px 14px;
+    text-align: center;
+    border: 2px solid transparent;
+  }
+  .hour-card.focus {
+    background: #1a4f8b;
+    color: #fff;
+  }
+  .hour-card.normal {
+    background: #eef3fb;
+    color: #1a4f8b;
+    border-color: #d0dff0;
+  }
+  .hour-card .subject {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .hour-card .sessions {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .hour-card .sessions-unit { font-size: 12px; font-weight: 400; opacity: 0.8; }
+  .hour-card .hours {
+    font-size: 12px;
+    opacity: 0.75;
+  }
+  .hour-card .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.25);
+    border-radius: 10px;
+    font-size: 10px;
+    padding: 2px 8px;
+    margin-top: 6px;
+  }
+  .hour-card.focus .badge { background: rgba(255,255,255,0.22); }
+  .hour-card.normal .badge { background: #d6e6f7; color: #1a4f8b; }
+
+  .hour-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f0f5fb;
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 14px;
+  }
+  .hour-total .total-label { color: #5a6f8a; }
+  .hour-total .total-num {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a4f8b;
+  }
+  .hour-total .total-num span { font-size: 13px; font-weight: 400; }
+
+  /* Schedule */
+  .schedule-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f4f9;
+  }
+  .schedule-row:last-child { border-bottom: none; }
+  .schedule-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    background: #1a4f8b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .schedule-content .s-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 3px;
+  }
+  .schedule-content .s-desc {
+    font-size: 13px;
+    color: #6a7f9a;
+    line-height: 1.7;
+  }
+
+  /* Price */
+  .price-box {
+    background: linear-gradient(135deg, #1a4f8b 0%, #0d3060 100%);
+    border-radius: 14px;
+    padding: 28px 28px;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+  .price-label {
+    font-size: 13px;
+    opacity: 0.7;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+  }
+  .price-num {
+    font-size: 46px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .price-num .unit { font-size: 20px; margin-right: 2px; }
+  .price-num .rmb { font-size: 18px; font-weight: 400; margin-left: 2px; opacity: 0.8; }
+  .price-detail {
+    font-size: 13px;
+    opacity: 0.75;
+    margin-bottom: 16px;
+  }
+  .price-tags {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .price-tag {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 12px;
+  }
+
+  /* GRE section */
+  .gre-box {
+    background: #fff;
+    border-radius: 14px;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px rgba(26,79,139,0.07);
+    border-left: 4px solid #3d8c4f;
+  }
+  .gre-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .gre-tag {
+    background: #3d8c4f;
+    color: #fff;
+    border-radius: 6px;
+    padding: 3px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .gre-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1a1a2e;
+  }
+  .gre-desc {
+    font-size: 13px;
+    color: #5a6f7a;
+    line-height: 1.9;
+    margin-bottom: 16px;
+  }
+  .gre-packages {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .gre-pkg {
+    border-radius: 10px;
+    padding: 14px 15px;
+    border: 1.5px solid #d4e8da;
+    background: #f6fbf7;
+  }
+  .gre-pkg.featured {
+    border-color: #3d8c4f;
+    background: #edf7ef;
+  }
+  .gre-pkg .pkg-type {
+    font-size: 11px;
+    color: #6a9a72;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+  .gre-pkg .pkg-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a3a20;
+    margin-bottom: 4px;
+  }
+  .gre-pkg .pkg-hours {
+    font-size: 12px;
+    color: #5a7a60;
+    margin-bottom: 8px;
+  }
+  .gre-pkg .pkg-price {
+    font-size: 20px;
+    font-weight: 700;
+    color: #2a6a35;
+    line-height: 1;
+  }
+  .gre-pkg .pkg-price span { font-size: 12px; font-weight: 400; color: #6a9a72; margin-left: 2px; }
+  .gre-pkg .pkg-ori {
+    font-size: 11px;
+    color: #9aaa9a;
+    margin-top: 3px;
+  }
+  .gre-pkg .pkg-disc {
+    display: inline-block;
+    background: #3d8c4f;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 10px;
+    padding: 1px 6px;
+    margin-left: 4px;
+  }
+  .gre-highlight {
+    background: #f0f7f2;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: #2a5a35;
+    line-height: 1.8;
+  }
+  .gre-highlight strong { color: #1a4a28; }
+
+  /* Advisor */
+  .advisor-box {
+    background: #fafbff;
+    border-radius: 12px;
+    padding: 20px 22px;
+    border: 1px solid #e0e8f4;
+  }
+  .advisor-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a4f8b;
+    margin-bottom: 10px;
+  }
+  .advisor-text {
+    font-size: 13px;
+    color: #4a5f75;
+    line-height: 1.9;
+  }
+  .advisor-text .em { color: #1a4f8b; font-weight: 700; }
+
+  /* Footer */
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 4px 0;
+    font-size: 12px;
+    color: #8a9bb0;
+    border-top: 1px solid #e0e8f4;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .footer-left { color: #8a9bb0; }
+  .footer-right { font-weight: 700; color: #1a4f8b; white-space: nowrap; }
+
+  @media (max-width: 560px) {
+    .header { padding: 28px 20px 22px; }
+    .header h1 { font-size: 21px; }
+    .section { padding: 22px 18px 18px; }
+    .hour-grid { grid-template-columns: repeat(2, 1fr); }
+    .analysis-grid { grid-template-columns: 1fr; }
+    .header-meta { gap: 14px; }
+    .price-num { font-size: 38px; }
+    .gre-box { padding: 20px 18px; }
+    .footer { flex-direction: column; align-items: center; text-align: center; gap: 6px; }
+  }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-school">新航道成都学校 · NEW CHANNEL CHENGDU</div>
+    <h1>吴星熠 课程规划方案</h1>
+    <div class="header-sub">PERSONALIZED STUDY PLAN &nbsp;·&nbsp; 全程 1 对 1 精品课</div>
+    <div class="header-meta">
+      <div class="meta-item">
+        <span class="meta-label">当前成绩</span>
+        <span class="meta-value">5.5 分（裸考）</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">目标分数</span>
+        <span class="meta-value">7.0 分+</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">学习周期</span>
+        <span class="meta-value">5/13 — 6/10</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">课程总时长</span>
+        <span class="meta-value">42 小时 / 28 节</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 学情分析 -->
+  <div class="section">
+    <div class="section-title"><span class="dot"></span>学情诊断</div>
+    <div class="analysis-grid">
+      <div class="analysis-card">
+        <div class="label">听力 / 阅读</div>
+        <div class="value">基础扎实</div>
+        <div class="note">加拿大语言环境长期熏染，无需大量基础补强</div>
+      </div>
+      <div class="analysis-card">
+        <div class="label">口语 / 写作</div>
+        <div class="value">约 4.5 分区间</div>
+        <div class="note">表达体系与学术规范仍需系统搭建</div>
+      </div>
+    </div>
+    <div class="analysis-remark">
+      针对性策略：听力 & 阅读聚焦 <strong>高分技巧与难点题型</strong>，不做重复基础训练；口语 & 写作进行<strong>全程系统强化</strong>，以话题框架构建 + 批改反馈为核心驱动快速提分。
+    </div>
+  </div>
+
+  <!-- 课时分配 -->
+  <div class="section">
+    <div class="section-title"><span class="dot"></span>课时分配方案</div>
+    <div class="hour-grid">
+      <div class="hour-card focus">
+        <div class="subject">口语</div>
+        <div class="sessions">10<span class="sessions-unit"> 节</span></div>
+        <div class="hours">15 小时</div>
+        <div class="badge">重点强化</div>
+      </div>
+      <div class="hour-card focus">
+        <div class="subject">写作</div>
+        <div class="sessions">10<span class="sessions-unit"> 节</span></div>
+        <div class="hours">15 小时</div>
+        <div class="badge">重点强化</div>
+      </div>
+      <div class="hour-card normal">
+        <div class="subject">听力</div>
+        <div class="sessions">4<span class="sessions-unit"> 节</span></div>
+        <div class="hours">6 小时</div>
+        <div class="badge">难点精讲</div>
+      </div>
+      <div class="hour-card normal">
+        <div class="subject">阅读</div>
+        <div class="sessions">4<span class="sessions-unit"> 节</span></div>
+        <div class="hours">6 小时</div>
+        <div class="badge">难点精讲</div>
+      </div>
+    </div>
+    <div class="hour-total">
+      <span class="total-label">合计课时</span>
+      <span class="total-num">42 <span>小时 / 28 节课</span></span>
+    </div>
+  </div>
+
+  <!-- 排课说明 -->
+  <div class="section">
+    <div class="section-title"><span class="dot"></span>排课安排</div>
+
+    <div class="schedule-row">
+      <div class="schedule-icon">📅</div>
+      <div class="schedule-content">
+        <div class="s-title">学习周期</div>
+        <div class="s-desc">2025 年 5 月 13 日 — 6 月 10 日，共约 4 周</div>
+      </div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-icon">⏰</div>
+      <div class="schedule-content">
+        <div class="s-title">每日课次</div>
+        <div class="s-desc">建议每天安排 1—2 节课（每节 1.5 小时），全日制节奏，高效冲刺</div>
+      </div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-icon">🗓</div>
+      <div class="schedule-content">
+        <div class="s-title">排课时段</div>
+        <div class="s-desc">上午 9:00—10:30 / 10:40—12:10<br>下午 13:40—15:10 / 15:20—16:50 / 17:00—18:30<br>具体课程安排将于报名后与学生沟通确认后排定</div>
+      </div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-icon">📝</div>
+      <div class="schedule-content">
+        <div class="s-title">配套服务</div>
+        <div class="s-desc">全程口语 / 写作作业批改 · 每周备考考情推送 · 阶段测评 · 助教 1 对 1 口语陪练<br>雅思官考代报服务（推荐码 XH510101）· IDP 雅思官方指定报名点 · 报考 IDP 机考立享 <strong>20 元补贴</strong>，活动截至 2026 年 7 月 31 日</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 费用 -->
+  <div class="section">
+    <div class="section-title"><span class="dot"></span>课程费用</div>
+    <div class="price-box">
+      <div class="price-label">首访上门优惠价</div>
+      <div class="price-num"><span class="unit">¥</span>20,830<span class="rmb">元</span></div>
+      <div class="price-detail">620 元/小时 × 42 小时 · 已享 8 折优惠</div>
+      <div class="price-tags">
+        <span class="price-tag">📚 含全套配套教材</span>
+        <span class="price-tag">✅ 口写作业专项批改</span>
+        <span class="price-tag">🎓 IDP 官方报名点 · 代报享 20 元补贴</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- GRE 延伸规划 -->
+  <div class="gre-box">
+    <div class="gre-header">
+      <span class="gre-tag">延伸规划</span>
+      <span class="gre-title">GRE 课程方案 · 雅思达标后的下一步</span>
+    </div>
+    <div class="gre-desc">
+      GRE 是申请北美顶尖研究生院的核心标化成绩，对理工背景学生（数学部分优势明显）尤为重要。星熠在 UBC Science 就读，建议雅思冲刺的同时提前了解课程节奏，雅思结束即可无缝衔接。
+    </div>
+
+    <div class="gre-packages" style="grid-template-columns:1fr;">
+      <div class="gre-pkg featured">
+        <div class="pkg-type">1v1 加油包 B</div>
+        <div class="pkg-name">42 课时 · 全科精讲</div>
+        <div class="pkg-hours" style="margin-bottom:10px;">阅读 18H &nbsp;·&nbsp; 填空 15H &nbsp;·&nbsp; 数学 6H &nbsp;·&nbsp; 作文 3H</div>
+        <div class="pkg-price">23,200<span>元</span></div>
+        <div class="pkg-ori">原价 27,300 元 <span class="pkg-disc">85折</span></div>
+      </div>
+    </div>
+
+    <div class="gre-highlight">
+      <strong>顾问提示：</strong>理工背景的星熠数学板块优势明显，42 课时的重心应放在 Verbal（语文推理）和填空上。1v1 形式可以按她的实际薄弱点灵活调整课时分配，雅思结束即可无缝衔接 GRE 备考。
+    </div>
+  </div>
+
+  <!-- 顾问建议 -->
+  <div class="section">
+    <div class="section-title"><span class="dot"></span>Grace 规划建议</div>
+    <div class="advisor-box">
+      <div class="advisor-title">为什么选择 1 对 1 精准突破</div>
+      <div class="advisor-text">
+        星熠目前在加拿大就读，<span class="em">听力 & 阅读底子不差</span>，裸考已到 5.5，说明真正的瓶颈在<span class="em">口语的学术表达体系和写作的论证逻辑</span>，而非基础词汇。1 对 1 课程可以做到：课课针对她的真实薄弱点，不浪费时间在她已掌握的内容上；口语课可以实时纠音、实时拓展话题框架；写作每篇都有专项批改，能看到自己每次提升在哪。<br><br>
+        1 对 1 另一个核心优势在于<span class="em">时间完全由学生主导</span>——每节课的时间点和节奏可以灵活协商，课与课之间留有充足的空档，让星熠能够自主安排课后练习、模拟题训练和复盘，而不是像班课一样被固定排课节奏拖着走。备考效率往往就来自这些自主消化的时间。<br><br>
+        4 周高强度冲刺，配合在加拿大的真实语言环境，<span class="em">从 5.5 到 7 分是完全可以实现的目标</span>。
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span class="footer-left">新航道成都学校 &nbsp;|&nbsp; 课程规划方案 · 吴星熠 &nbsp;|&nbsp; 2026年5月</span>
+    <span class="footer-right">如有疑问请联系课程主管 Grace &nbsp;18512820890</span>
+  </div>
+
+</div>
+</body>
+</html>
