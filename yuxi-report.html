@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>留学预备入学测试报告</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue-dark:   #1E5F9E;
+  --blue-mid:    #2E75B6;
+  --blue-light:  #D6E8F5;
+  --blue-pale:   #EEF5FB;
+  --green-dark:  #1B5E20;
+  --green-light: #E8F5E9;
+  --red-dark:    #B71C1C;
+  --red-light:   #FFEBEE;
+  --gold:        #C8A94A;
+  --gold-light:  #FFF8E1;
+  --gray-100:    #F7F8FA;
+  --gray-200:    #F0F2F5;
+  --gray-400:    #9AA3B0;
+  --gray-700:    #3D4450;
+  --text:        #2C3340;
+  --border:      #DDE3EC;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Noto Sans SC', sans-serif; background: #EDF1F7; color: var(--text); font-size: 13px; line-height: 1.7; }
+.page { max-width: 820px; margin: 32px auto; background: white; border-radius: 12px; box-shadow: 0 4px 40px rgba(30,95,158,0.10); overflow: hidden; }
+.report-header { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-mid) 100%); padding: 40px 48px 32px; position: relative; overflow: hidden; }
+.report-header::before { content: ''; position: absolute; top: -60px; right: -60px; width: 220px; height: 220px; border-radius: 50%; background: rgba(255,255,255,0.05); }
+.report-header::after { content: ''; position: absolute; bottom: -80px; left: 30%; width: 300px; height: 300px; border-radius: 50%; background: rgba(255,255,255,0.04); }
+.school-tag { font-size: 12px; color: rgba(255,255,255,0.65); letter-spacing: 1.5px; margin-bottom: 10px; }
+.report-title { font-family: 'Noto Serif SC', serif; font-size: 30px; font-weight: 700; color: white; letter-spacing: 2px; margin-bottom: 4px; }
+.report-subtitle { font-size: 12px; color: rgba(255,255,255,0.50); letter-spacing: 2px; margin-bottom: 24px; }
+.header-meta { display: flex; gap: 32px; flex-wrap: wrap; }
+.meta-item { display: flex; flex-direction: column; gap: 2px; }
+.meta-label { font-size: 11px; color: rgba(255,255,255,0.50); letter-spacing: 1px; }
+.meta-value { font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.92); }
+.body { padding: 40px 48px 48px; }
+.section { margin-bottom: 40px; }
+.section-title { font-family: 'Noto Serif SC', serif; font-size: 15px; font-weight: 600; color: var(--blue-dark); border-left: 4px solid var(--blue-dark); padding: 6px 0 6px 14px; margin-bottom: 16px; letter-spacing: 0.5px; }
+.section-title span { font-family: 'Noto Sans SC', sans-serif; font-size: 11px; font-weight: 400; color: var(--gray-400); margin-left: 8px; letter-spacing: 1px; }
+.score-summary { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+.score-card { border-radius: 10px; padding: 16px 14px; border: 1px solid var(--border); background: var(--gray-100); display: flex; flex-direction: column; }
+.score-card.highlight { background: linear-gradient(135deg, var(--blue-dark), var(--blue-mid)); border-color: transparent; }
+.score-card-label { font-size: 11px; color: var(--gray-400); letter-spacing: 0.3px; margin-bottom: 10px; line-height: 1.4; }
+.score-card.highlight .score-card-label { color: rgba(255,255,255,0.65); }
+.score-fraction { font-family: 'Noto Serif SC', serif; font-size: 24px; font-weight: 700; color: var(--blue-dark); line-height: 1; margin-bottom: 4px; }
+.score-fraction.red { color: #C62828; }
+.score-fraction.green { color: #2E7D32; }
+.score-card.highlight .score-fraction { color: white; }
+.score-fraction sub { font-size: 12px; font-weight: 400; color: var(--gray-400); }
+.score-card.highlight .score-fraction sub { color: rgba(255,255,255,0.55); }
+.score-rate { font-size: 11px; color: var(--gray-400); margin-top: 3px; }
+.score-card.highlight .score-rate { color: rgba(255,255,255,0.65); }
+.rate-bar { height: 4px; background: var(--border); border-radius: 2px; margin-top: 10px; overflow: hidden; }
+.score-card.highlight .rate-bar { background: rgba(255,255,255,0.2); }
+.rate-fill { height: 100%; border-radius: 2px; background: var(--blue-mid); }
+.score-card.highlight .rate-fill { background: rgba(255,255,255,0.8); }
+.level-row { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+.level-cell { padding: 16px 12px; text-align: center; border-right: 1px solid var(--border); background: var(--gray-100); }
+.level-cell:last-child { border-right: none; }
+.level-cell.active { background: var(--blue-dark); }
+.level-name { font-weight: 700; font-size: 14px; color: var(--gray-700); margin-bottom: 4px; }
+.level-cell.active .level-name { color: white; }
+.level-range { font-size: 11px; color: var(--gray-400); }
+.level-cell.active .level-range { color: rgba(255,255,255,0.70); }
+.level-badge { display: inline-block; margin-top: 6px; font-size: 10px; background: rgba(255,255,255,0.2); border-radius: 4px; padding: 2px 8px; color: white; }
+.sub-section-title { font-size: 13px; font-weight: 600; color: var(--blue-mid); margin: 20px 0 8px; display: flex; align-items: center; gap: 8px; }
+.sub-section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.score-badge { font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 20px; color: white; white-space: nowrap; }
+.badge-high { background: #2E7D32; }
+.badge-mid  { background: var(--blue-mid); }
+.badge-low  { background: #E65100; }
+.badge-zero { background: #C62828; }
+table { width: 100%; border-collapse: collapse; font-size: 12.5px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); margin-bottom: 4px; }
+thead tr { background: var(--blue-dark); color: white; }
+thead th { padding: 9px 12px; text-align: left; font-weight: 500; font-size: 12px; letter-spacing: 0.3px; }
+thead th.center { text-align: center; }
+tbody tr:nth-child(odd)  { background: var(--gray-100); }
+tbody tr:nth-child(even) { background: white; }
+tbody tr:hover { background: var(--blue-pale); }
+tbody td { padding: 8px 12px; border-top: 1px solid var(--border); vertical-align: middle; }
+tbody td.center { text-align: center; }
+.correct   { color: #2E7D32; font-weight: 600; }
+.incorrect { color: #C62828; font-weight: 600; }
+.blank-ans { color: var(--gray-400); font-style: italic; }
+.comment-block { border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; border-left: 4px solid; }
+.comment-block.good    { background: var(--green-light); border-color: #388E3C; }
+.comment-block.improve { background: var(--red-light);   border-color: #E53935; }
+.comment-block.advice  { background: var(--blue-pale);   border-color: var(--blue-mid); }
+.comment-block.warn    { background: var(--gold-light);  border-color: var(--gold); }
+.comment-title { font-weight: 700; font-size: 13px; letter-spacing: 0.3px; margin-bottom: 8px; }
+.comment-block.good    .comment-title { color: var(--green-dark); }
+.comment-block.improve .comment-title { color: var(--red-dark); }
+.comment-block.advice  .comment-title { color: var(--blue-dark); }
+.comment-block.warn    .comment-title { color: #E65100; }
+.comment-block ul { padding-left: 18px; }
+.comment-block li { font-size: 12.5px; color: var(--gray-700); margin-bottom: 5px; line-height: 1.65; }
+.comment-block p { font-size: 12.5px; color: var(--gray-700); line-height: 1.75; }
+.profile-grid { display: grid; grid-template-columns: 180px 1fr; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+.profile-label { background: var(--blue-pale); padding: 10px 16px; font-weight: 600; font-size: 12px; color: var(--blue-dark); border-top: 1px solid var(--border); }
+.profile-value { background: white; padding: 10px 16px; font-size: 12.5px; color: var(--gray-700); border-top: 1px solid var(--border); }
+.profile-label:first-child, .profile-value:nth-child(2) { border-top: none; }
+.divider { height: 1px; background: var(--border); margin: 32px 0; }
+.report-footer { border-top: 1px solid var(--border); padding: 16px 48px; display: flex; justify-content: space-between; align-items: center; background: var(--gray-100); font-size: 11px; color: var(--gray-400); }
+.print-btn { position: fixed; bottom: 32px; right: 32px; background: var(--blue-dark); color: white; border: none; border-radius: 50px; padding: 12px 24px; font-size: 13px; font-family: 'Noto Sans SC', sans-serif; font-weight: 500; cursor: pointer; box-shadow: 0 4px 20px rgba(30,95,158,0.35); letter-spacing: 0.5px; transition: transform 0.15s, box-shadow 0.15s; z-index: 100; }
+.print-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(30,95,158,0.45); }
+@media print { body { background: white; font-size: 12px; } .page { margin: 0; border-radius: 0; box-shadow: none; max-width: 100%; } .no-print { display: none !important; } .section { break-inside: avoid; } .report-header, .score-card.highlight, .level-cell.active, .comment-block, .profile-label, .score-badge, .rate-fill, thead tr { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+</style>
+</head>
+<body>
+
+<button class="print-btn no-print" onclick="window.print()">打印 / 导出 PDF</button>
+
+<div class="page">
+
+  <!-- Header -->
+  <div class="report-header">
+    <div class="school-tag">新航道成都学校 · 留学预备能力组</div>
+    <div class="report-title">留学预备入学测试报告</div>
+    <div class="report-subtitle">STUDY ABROAD PREP PLACEMENT TEST REPORT</div>
+    <div class="header-meta">
+      <div class="meta-item">
+        <div class="meta-label">学生姓名</div>
+        <div class="meta-value">宇曦</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">总分</div>
+        <div class="meta-value">30 / 80</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">推荐级别</div>
+        <div class="meta-value">雅思预备衔接</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">测试日期</div>
+        <div class="meta-value">2026 / 05 / 17</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <!-- 综合成绩 -->
+    <div class="section">
+      <div class="section-title">综合成绩一览 <span>SCORE OVERVIEW</span></div>
+      <div class="score-summary">
+        <div class="score-card highlight">
+          <div class="score-card-label">总分<br>Total</div>
+          <div class="score-fraction">30<sub> /80</sub></div>
+          <div class="score-rate">得分率 38%</div>
+          <div class="rate-bar"><div class="rate-fill" style="width:38%"></div></div>
+        </div>
+        <div class="score-card">
+          <div class="score-card-label">词汇<br>Vocabulary</div>
+          <div class="score-fraction red">4<sub> /20</sub></div>
+          <div class="score-rate">得分率 20%</div>
+          <div class="rate-bar"><div class="rate-fill" style="width:20%; background:#C62828"></div></div>
+        </div>
+        <div class="score-card">
+          <div class="score-card-label">语法<br>Grammar</div>
+          <div class="score-fraction red">5<sub> /20</sub></div>
+          <div class="score-rate">得分率 25%</div>
+          <div class="rate-bar"><div class="rate-fill" style="width:25%; background:#C62828"></div></div>
+        </div>
+        <div class="score-card">
+          <div class="score-card-label">阅读<br>Reading</div>
+          <div class="score-fraction">13<sub> /20</sub></div>
+          <div class="score-rate">得分率 65%</div>
+          <div class="rate-bar"><div class="rate-fill" style="width:65%"></div></div>
+        </div>
+        <div class="score-card">
+          <div class="score-card-label">听力<br>Listening</div>
+          <div class="score-fraction red">8<sub> /20</sub></div>
+          <div class="score-rate">得分率 40%</div>
+          <div class="rate-bar"><div class="rate-fill" style="width:40%; background:#E65100"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 课程推荐 -->
+    <div class="section">
+      <div class="section-title">课程推荐 <span>COURSE RECOMMENDATION</span></div>
+      <div class="comment-block advice">
+        <div class="comment-title">推荐课程：雅思预备衔接</div>
+        <p>根据本次测试结果，推荐你先完成<strong>雅思预备衔接</strong>课程。测试显示你具备良好的逻辑理解能力（阅读主旨题满分），但词汇量、拼写规范性和语法体系尚需系统建立，直接进入雅思精讲课程难度跨度较大。雅思预备衔接课程将帮助你打通基础词汇与语法，同时建立雅思四项技能的初步认知，为后续雅思精讲 / 强化课程做好准备。</p>
+      </div>
+    </div>
+
+    <!-- 各板块分析 -->
+    <div class="section">
+      <div class="section-title">各板块详细分析 <span>SECTION ANALYSIS</span></div>
+
+      <!-- 词汇 -->
+      <div class="sub-section-title">词汇 <span class="score-badge badge-zero">4 / 20 · 20%</span></div>
+      <div class="comment-block good">
+        <div class="comment-title">✓ 已掌握</div>
+        <ul>
+          <li>基础日常词汇有一定积累：January（一月）、Cinema（电影院）、Spider（蜘蛛）能准确作答</li>
+          <li>Out-going（外向的）有语义认知，中文翻译意思正确</li>
+        </ul>
+      </div>
+      <div class="comment-block improve">
+        <div class="comment-title">✗ 主要失分点</div>
+        <ul>
+          <li><strong>大量空白</strong>：20 题中有 14 题完全未作答，词汇储量严重不足</li>
+          <li><strong>拼写规范性不足</strong>：蔬菜写成 "Vegetaball"（应为 vegetable），说明单词形态未熟练掌握</li>
+          <li>学科类词汇（biology、allergic、cathedral、acid rain 等）完全空白</li>
+        </ul>
+      </div>
+
+      <!-- 语法 -->
+      <div class="sub-section-title">语法 <span class="score-badge badge-zero">5 / 20 · 25%</span></div>
+      <div class="comment-block good">
+        <div class="comment-title">✓ 已掌握</div>
+        <ul>
+          <li>一般过去时（visited）能正确作答</li>
+          <li>单选中关系副词 where（Q3）、主谓一致 have,has（Q4）、强调句结构（Q5）判断正确</li>
+          <li>writes; do 搭配（Q10）答对，显示对功能动词替代有一定感知</li>
+        </ul>
+      </div>
+      <div class="comment-block improve">
+        <div class="comment-title">✗ 主要失分点</div>
+        <ul>
+          <li><strong>被动语态未掌握</strong>：Q5（are given）、Q6（been explored）均答错，是语法最大短板</li>
+          <li><strong>虚拟语气全部失分</strong>：Q9、Q10 填空（would not miss / had said）及单选 Q7 全部错误</li>
+          <li>时态形态混淆：Q1 用 watching（应为 watches），Q4 副词比较级缺失（slow→more slowly）</li>
+          <li>定语从句：Q8 将 whose 答为 whom；单选 Q1（宾语从句）、Q2（make 结构）、Q8（not until 倒装）均错</li>
+        </ul>
+      </div>
+
+      <!-- 阅读 -->
+      <div class="sub-section-title">阅读 <span class="score-badge badge-mid">13 / 20 · 65%</span></div>
+      <div class="comment-block good">
+        <div class="comment-title">✓ 已掌握</div>
+        <ul>
+          <li><strong>段落主旨题全对</strong>（5/5，得10分）：B、G、A、E、C，整体阅读理解与逻辑归纳能力突出，是本次测试最大亮点</li>
+          <li>句子填空字母选项前三题（D、A、E）正确，说明能理解因果语义关系</li>
+        </ul>
+      </div>
+      <div class="comment-block improve">
+        <div class="comment-title">✗ 主要失分点</div>
+        <ul>
+          <li><strong>因果连接词语法功能全部混淆</strong>（词语部分0/5）：because（连词）/ due to（介词短语）/ cause（动词）/ reason（名词）/ results in（动词短语）的词性与用法尚未系统区分</li>
+          <li>Q4、Q5 字母选项也同时答错（C/B vs B/C），连接词选错后，配套字母也受影响</li>
+        </ul>
+      </div>
+
+      <!-- 听力 -->
+      <div class="sub-section-title">听力 <span class="score-badge badge-low">8 / 20 · 40%</span></div>
+      <div class="comment-block good">
+        <div class="comment-title">✓ 已掌握</div>
+        <ul>
+          <li>填空 Q5（slow）正确，能捕捉简单高频词</li>
+          <li>选择 Q7（A）、Q9（B）、Q10（A）全对，逻辑理解和细节辨别有一定基础</li>
+        </ul>
+      </div>
+      <div class="comment-block improve">
+        <div class="comment-title">✗ 主要失分点</div>
+        <ul>
+          <li><strong>拼写规范性制约得分</strong>：Q2 写成 "spisail"（应为 special）、Q3 写成 "memary"（应为 memory），听到了内容但写不准确</li>
+          <li>填空 Q1（older）、Q4（western）完全空白，说明对低频或抽象词汇的听音识别较弱</li>
+          <li>选择 Q6（A 误选，应为 B）、Q8（B 误选，应为 A），细节辨别偶有偏差</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 学情总结 -->
+    <div class="section">
+      <div class="section-title">学情总结 <span>LEARNER PROFILE</span></div>
+      <div class="profile-grid">
+        <div class="profile-label">综合水平</div>
+        <div class="profile-value">留备 L2 起点，整体基础薄弱，但具备良好的逻辑理解潜力</div>
+        <div class="profile-label">词汇现状</div>
+        <div class="profile-value">词汇量匮乏，拼写规范性不足，大量题目空白，需从核心词汇系统建立</div>
+        <div class="profile-label">语法现状</div>
+        <div class="profile-value">仅一般过去时和少数句型有感知，被动语态、虚拟语气、定语从句均需从零学习</div>
+        <div class="profile-label">阅读能力</div>
+        <div class="profile-value">整体理解与逻辑归纳突出（主旨题 5/5），连接词语法功能辨析待专项训练</div>
+        <div class="profile-label">听力能力</div>
+        <div class="profile-value">基本听辨有潜力，但拼写输出不准确是当前主要制约因素</div>
+        <div class="profile-label">核心短板</div>
+        <div class="profile-value">词汇量严重不足 + 拼写基础薄弱 + 语法体系尚未建立</div>
+      </div>
+    </div>
+
+    <!-- 课程规划建议 -->
+    <div class="section">
+      <div class="section-title">课程规划建议 <span>STUDY PLAN</span></div>
+      <div class="comment-block advice">
+        <div class="comment-title">① 词汇量与拼写同步攻克（优先级：最高）</div>
+        <p>从 L2 核心词表（500–800 词）出发，每天记忆 15 个新词，强制配合默写练习——光认识不够，必须能准确拼写。可借助 Anki 或词汇卡片，按主题分类（日常 / 学科 / 描述性）成组记忆，效率更高。</p>
+      </div>
+      <div class="comment-block advice">
+        <div class="comment-title">② 语法体系从零系统重建（优先级：最高）</div>
+        <p>按模块逐一突破：① 时态体系（一般现在时→过去时→完成时）；② 被动语态（am/is/are + done）；③ 虚拟语气（wish + had done / would）；④ 定语从句（who / whose / where）。每个模块精做 30 题以上，不求快，求理解逻辑。</p>
+      </div>
+      <div class="comment-block advice">
+        <div class="comment-title">③ 阅读连接词专项训练（优先级：中）</div>
+        <p>系统整理五类因果连接词的词性与句法位置：because（连词，引导从句）、due to（介词短语，后接名词）、cause / result in（及物动词，做谓语）、reason（名词，做主语/宾语）。结合造句练习加深语感。</p>
+      </div>
+      <div class="comment-block advice">
+        <div class="comment-title">④ 精听训练强化输出准确度（优先级：中）</div>
+        <p>你具备基本听辨能力，但拼写输出不准确是听力失分的主因。建议每天做 5 分钟英文听写练习（推荐 BBC 6 Minute English），听完后对照原文纠正拼写，将"听得到"转化为"写得准"。</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 附录：逐题得分表 -->
+    <div class="section">
+      <div class="section-title">附录：逐题得分表 <span>DETAILED SCORE TABLE</span></div>
+
+      <div class="sub-section-title">一 · 词汇（英→中）<span class="score-badge badge-zero">4 / 10</span></div>
+      <table>
+        <thead><tr><th>#</th><th>考查词</th><th>学生答案</th><th>标准答案</th><th class="center">得分</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>January</td><td class="correct">一月</td><td>一月</td><td class="center correct">1</td></tr>
+          <tr><td>2</td><td>Cinema</td><td class="correct">电影院</td><td>电影院</td><td class="center correct">1</td></tr>
+          <tr><td>3</td><td>Experienced</td><td class="blank-ans">（空）</td><td>经验丰富的</td><td class="center incorrect">0</td></tr>
+          <tr><td>4</td><td>Out-going</td><td class="correct">开朗的</td><td>外向的</td><td class="center correct">1</td></tr>
+          <tr><td>5</td><td>Spider</td><td class="correct">蜘蛛</td><td>蜘蛛</td><td class="center correct">1</td></tr>
+          <tr><td>6</td><td>Routine</td><td class="blank-ans">（空）</td><td>常规；惯例</td><td class="center incorrect">0</td></tr>
+          <tr><td>7</td><td>Liquid</td><td class="blank-ans">（空）</td><td>液体</td><td class="center incorrect">0</td></tr>
+          <tr><td>8</td><td>Marine</td><td class="blank-ans">（空）</td><td>海洋的</td><td class="center incorrect">0</td></tr>
+          <tr><td>9</td><td>Carnivorous</td><td class="blank-ans">（空）</td><td>食肉的</td><td class="center incorrect">0</td></tr>
+          <tr><td>10</td><td>Fatigue</td><td class="blank-ans">（空）</td><td>疲劳</td><td class="center incorrect">0</td></tr>
+        </tbody>
+      </table>
+
+      <div class="sub-section-title">一 · 词汇（中→英）<span class="score-badge badge-zero">0 / 10</span></div>
+      <table>
+        <thead><tr><th>#</th><th>考查词</th><th>学生答案</th><th>标准答案</th><th class="center">得分</th></tr></thead>
+        <tbody>
+          <tr><td>11</td><td>兴奋的</td><td class="blank-ans">（空）</td><td>excited</td><td class="center incorrect">0</td></tr>
+          <tr><td>12</td><td>蔬菜</td><td class="incorrect">Vegetaball</td><td>vegetable（拼写错误）</td><td class="center incorrect">0</td></tr>
+          <tr><td>13</td><td>生物学</td><td class="blank-ans">（空）</td><td>biology</td><td class="center incorrect">0</td></tr>
+          <tr><td>14</td><td>尤其</td><td class="blank-ans">（空）</td><td>especially</td><td class="center incorrect">0</td></tr>
+          <tr><td>15</td><td>价值</td><td class="blank-ans">（空）</td><td>value</td><td class="center incorrect">0</td></tr>
+          <tr><td>16</td><td>年度的</td><td class="blank-ans">（空）</td><td>annual</td><td class="center incorrect">0</td></tr>
+          <tr><td>17</td><td>紧急情况</td><td class="blank-ans">（空）</td><td>emergency</td><td class="center incorrect">0</td></tr>
+          <tr><td>18</td><td>大教堂</td><td class="blank-ans">（空）</td><td>cathedral</td><td class="center incorrect">0</td></tr>
+          <tr><td>19</td><td>过敏的</td><td class="blank-ans">（空）</td><td>allergic</td><td class="center incorrect">0</td></tr>
+          <tr><td>20</td><td>酸雨</td><td class="blank-ans">（空）</td><td>acid rain</td><td class="center incorrect">0</td></tr>
+        </tbody>
+      </table>
+
+      <div class="sub-section-title">二 · 语法填空<span class="score-badge badge-zero">1 / 10</span></div>
+      <table>
+        <thead><tr><th>#</th><th>学生答案</th><th>标准答案</th><th>错误类型</th><th class="center">得分</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td class="incorrect">watching</td><td>watches</td><td>时态形态错误（进行时→一般现在时）</td><td class="center incorrect">0</td></tr>
+          <tr><td>2</td><td class="incorrect">（错误）</td><td>is / has been</td><td>主谓一致错误</td><td class="center incorrect">0</td></tr>
+          <tr><td>3</td><td class="correct">visited</td><td>visited</td><td>—</td><td class="center correct">1</td></tr>
+          <tr><td>4</td><td class="incorrect">slow</td><td>more slowly</td><td>副词比较级缺失</td><td class="center incorrect">0</td></tr>
+          <tr><td>5</td><td class="incorrect">give</td><td>are given</td><td>被动语态未掌握</td><td class="center incorrect">0</td></tr>
+          <tr><td>6</td><td class="incorrect">explores</td><td>been explored</td><td>现在完成时被动语态错误</td><td class="center incorrect">0</td></tr>
+          <tr><td>7</td><td class="blank-ans">（空）</td><td>hadn't heard</td><td>过去完成时空白</td><td class="center incorrect">0</td></tr>
+          <tr><td>8</td><td class="incorrect">whom</td><td>whose</td><td>定语从句关系词混淆</td><td class="center incorrect">0</td></tr>
+          <tr><td>9</td><td class="incorrect">not miss</td><td>would not miss</td><td>虚拟语气未掌握</td><td class="center incorrect">0</td></tr>
+          <tr><td>10</td><td class="incorrect">say</td><td>had said</td><td>wish 虚拟语气形态错误</td><td class="center incorrect">0</td></tr>
+        </tbody>
+      </table>
+
+      <div class="sub-section-title">二 · 语法单选<span class="score-badge badge-low">4 / 10</span></div>
+      <table>
+        <thead><tr><th>#</th><th>学生答案</th><th>标准答案</th><th>考点</th><th class="center">得分</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td class="incorrect">B</td><td>C</td><td>宾语从句结构</td><td class="center incorrect">0</td></tr>
+          <tr><td>2</td><td class="incorrect">C</td><td>D</td><td>make sb do / be made to do</td><td class="center incorrect">0</td></tr>
+          <tr><td>3</td><td class="correct">B</td><td>B</td><td>关系副词 where</td><td class="center correct">1</td></tr>
+          <tr><td>4</td><td class="correct">D</td><td>D</td><td>主谓一致（each / each of us）</td><td class="center correct">1</td></tr>
+          <tr><td>5</td><td class="correct">D</td><td>D</td><td>强调句 + 同位语从句</td><td class="center correct">1</td></tr>
+          <tr><td>6</td><td class="incorrect">B</td><td>C</td><td>现在完成时语境</td><td class="center incorrect">0</td></tr>
+          <tr><td>7</td><td class="incorrect">D</td><td>C</td><td>虚拟语气 wish + had worked</td><td class="center incorrect">0</td></tr>
+          <tr><td>8</td><td class="incorrect">C</td><td>D</td><td>not until 倒装句</td><td class="center incorrect">0</td></tr>
+          <tr><td>9</td><td class="incorrect">D</td><td>B</td><td>形容词排列顺序</td><td class="center incorrect">0</td></tr>
+          <tr><td>10</td><td class="correct">A</td><td>A</td><td>writes well / do（助动词代替）</td><td class="center correct">1</td></tr>
+        </tbody>
+      </table>
+
+      <div class="sub-section-title">三 · 阅读·段落主旨<span class="score-badge badge-high">10 / 10</span></div>
+      <table>
+        <thead><tr><th>段落</th><th>学生答案</th><th>标准答案</th><th class="center">得分</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td class="correct">B</td><td>B</td><td class="center correct">2</td></tr>
+          <tr><td>2</td><td class="correct">G</td><td>G</td><td class="center correct">2</td></tr>
+          <tr><td>3</td><td class="correct">A</td><td>A</td><td class="center correct">2</td></tr>
+          <tr><td>4</td><td class="correct">E</td><td>E</td><td class="center correct">2</td></tr>
+          <tr><td>5</td><td class="correct">C</td><td>C</td><td class="center correct">2</td></tr>
+        </tbody>
+      </table>
+
+      <div class="sub-section-title">三 · 阅读·句子填空<span class="score-badge badge-low">3 / 10</span></div>
+      <table>
+        <thead><tr><th>#</th><th>词（学生）</th><th>词（标准）</th><th>字母（学生）</th><th>字母（标准）</th><th class="center">得分</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td class="incorrect">cause</td><td>because</td><td class="correct">D</td><td>D</td><td class="center incorrect">1</td></tr>
+          <tr><td>2</td><td class="incorrect">reason</td><td>cause</td><td class="correct">A</td><td>A</td><td class="center incorrect">1</td></tr>
+          <tr><td>3</td><td class="incorrect">because</td><td>due to</td><td class="correct">E</td><td>E</td><td class="center incorrect">1</td></tr>
+          <tr><td>4</td><td class="incorrect">results in</td><td>reason</td><td class="incorrect">C</td><td>B</td><td class="center incorrect">0</td></tr>
+          <tr><td>5</td><td class="incorrect">due to</td><td>results in</td><td class="incorrect">B</td><td>C</td><td class="center incorrect">0</td></tr>
+        </tbody>
+      </table>
+
+      <div class="sub-section-title">四 · 听力填空<span class="score-badge badge-zero">2 / 10</span></div>
+      <table>
+        <thead><tr><th>#</th><th>学生答案</th><th>标准答案</th><th>备注</th><th class="center">得分</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td class="blank-ans">（空）</td><td>older</td><td>未作答</td><td class="center incorrect">0</td></tr>
+          <tr><td>2</td><td class="incorrect">spisail</td><td>special</td><td>拼写错误</td><td class="center incorrect">0</td></tr>
+          <tr><td>3</td><td class="incorrect">memary</td><td>memory</td><td>拼写错误</td><td class="center incorrect">0</td></tr>
+          <tr><td>4</td><td class="blank-ans">（空）</td><td>western</td><td>未作答</td><td class="center incorrect">0</td></tr>
+          <tr><td>5</td><td class="correct">slow</td><td>slow</td><td>—</td><td class="center correct">2</td></tr>
+        </tbody>
+      </table>
+
+      <div class="sub-section-title">四 · 听力选择<span class="score-badge badge-mid">6 / 10</span></div>
+      <table>
+        <thead><tr><th>#</th><th>学生答案</th><th>标准答案</th><th class="center">得分</th></tr></thead>
+        <tbody>
+          <tr><td>6</td><td class="incorrect">A</td><td>B</td><td class="center incorrect">0</td></tr>
+          <tr><td>7</td><td class="correct">A</td><td>A</td><td class="center correct">2</td></tr>
+          <tr><td>8</td><td class="incorrect">B</td><td>A</td><td class="center incorrect">0</td></tr>
+          <tr><td>9</td><td class="correct">B</td><td>B</td><td class="center correct">2</td></tr>
+          <tr><td>10</td><td class="correct">A</td><td>A</td><td class="center correct">2</td></tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+  <div class="report-footer">
+    <span>留学预备能力组 · 入学测试</span>
+    <span>新航道成都学校 | 如有疑问请联系课程主管龚老师 18512820890</span>
+  </div>
+
+</div>
+</body>
+</html>
