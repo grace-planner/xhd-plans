@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>张煜晨 · KET 入学测试报告</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue-dark:   #1E5F9E;
+  --blue-mid:    #2E75B6;
+  --blue-light:  #D6E8F5;
+  --blue-pale:   #EEF5FB;
+  --green-dark:  #1B5E20;
+  --green-light: #E8F5E9;
+  --red-dark:    #B71C1C;
+  --red-light:   #FFEBEE;
+  --gold:        #C8A94A;
+  --gold-light:  #FFF8E1;
+  --gray-100:    #F7F8FA;
+  --gray-200:    #F0F2F5;
+  --gray-400:    #9AA3B0;
+  --gray-700:    #3D4450;
+  --text:        #2C3340;
+  --border:      #DDE3EC;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Noto Sans SC', sans-serif; background: #EDF1F7; color: var(--text); font-size: 13px; line-height: 1.7; }
+.page { max-width: 820px; margin: 32px auto; background: white; border-radius: 12px; box-shadow: 0 4px 40px rgba(30,95,158,0.10); overflow: hidden; }
+.report-header { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-mid) 100%); padding: 40px 48px 32px; position: relative; overflow: hidden; }
+.report-header::before { content: ''; position: absolute; top: -60px; right: -60px; width: 220px; height: 220px; border-radius: 50%; background: rgba(255,255,255,0.05); }
+.report-header::after { content: ''; position: absolute; bottom: -80px; left: 30%; width: 300px; height: 300px; border-radius: 50%; background: rgba(255,255,255,0.04); }
+.school-tag { font-size: 12px; color: rgba(255,255,255,0.65); letter-spacing: 1.5px; margin-bottom: 10px; }
+.report-title { font-family: 'Noto Serif SC', serif; font-size: 30px; font-weight: 700; color: white; letter-spacing: 2px; margin-bottom: 4px; }
+.report-subtitle { font-size: 12px; color: rgba(255,255,255,0.50); letter-spacing: 2px; margin-bottom: 24px; }
+.header-meta { display: flex; gap: 32px; flex-wrap: wrap; }
+.meta-item { display: flex; flex-direction: column; gap: 2px; }
+.meta-label { font-size: 11px; color: rgba(255,255,255,0.50); letter-spacing: 1px; }
+.meta-value { font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.92); }
+.body { padding: 40px 48px 48px; }
+.section { margin-bottom: 40px; }
+.section-title { font-family: 'Noto Serif SC', serif; font-size: 15px; font-weight: 600; color: var(--blue-dark); border-left: 4px solid var(--blue-dark); padding: 6px 0 6px 14px; margin-bottom: 16px; letter-spacing: 0.5px; }
+.section-title span { font-family: 'Noto Sans SC', sans-serif; font-size: 11px; font-weight: 400; color: var(--gray-400); margin-left: 8px; letter-spacing: 1px; }
+.score-summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 12px; }
+.score-summary-bottom { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.score-card { border-radius: 10px; padding: 16px 14px; border: 1px solid var(--border); background: var(--gray-100); display: flex; flex-direction: column; }
+.score-card.highlight { background: linear-gradient(135deg, var(--blue-dark), var(--blue-mid)); border-color: transparent; }
+.score-card-label { font-size: 11px; color: var(--gray-400); letter-spacing: 0.3px; margin-bottom: 10px; line-height: 1.4; }
+.score-card.highlight .score-card-label { color: rgba(255,255,255,0.65); }
+.score-fraction { font-family: 'Noto Serif SC', serif; font-size: 24px; font-weight: 700; color: var(--blue-dark); line-height: 1; margin-bottom: 4px; }
+.score-fraction.red { color: #C62828; }
+.score-fraction.green { color: #2E7D32; }
+.score-card.highlight .score-fraction { color: white; }
+.score-fraction sub { font-size: 12px; font-weight: 400; color: var(--gray-400); }
+.score-card.highlight .score-fraction sub { color: rgba(255,255,255,0.55); }
+.score-rate { font-size: 11px; color: var(--gray-400); margin-top: 3px; }
+.score-card.highlight .score-rate { color: rgba(255,255,255,0.65); }
+.cambridge-score { font-size: 12px; color: var(--blue-mid); font-weight: 600; margin-top: 4px; }
+.score-card.highlight .cambridge-score { color: rgba(255,255,255,0.85); }
+.cefr-badge { display: inline-block; font-size: 10px; padding: 1px 7px; border-radius: 4px; background: var(--blue-light); color: var(--blue-dark); font-weight: 700; margin-top: 3px; }
+.score-card.highlight .cefr-badge { background: rgba(255,255,255,0.2); color: white; }
+.rate-bar { height: 4px; background: var(--border); border-radius: 2px; margin-top: 10px; overflow: hidden; }
+.score-card.highlight .rate-bar { background: rgba(255,255,255,0.2); }
+.rate-fill { height: 100%; border-radius: 2px; background: var(--blue-mid); }
+.score-card.highlight .rate-fill { background: rgba(255,255,255,0.8); }
+.level-row { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+.level-cell { padding: 16px 12px; text-align: center; border-right: 1px solid var(--border); background: var(--gray-100); }
+.level-cell:last-child { border-right: none; }
+.level-cell.active { background: var(--blue-dark); }
+.level-name { font-weight: 700; font-size: 14px; color: var(--gray-700); margin-bottom: 4px; }
+.level-cell.active .level-name { color: white; }
+.level-range { font-size: 11px; color: var(--gray-400); }
+.level-cell.active .level-range { color: rgba(255,255,255,0.70); }
+.level-badge { display: inline-block; margin-top: 6px; font-size: 10px; background: rgba(255,255,255,0.2); border-radius: 4px; padding: 2px 8px; color: white; }
+.sub-section-title { font-size: 13px; font-weight: 600; color: var(--blue-mid); margin: 20px 0 8px; display: flex; align-items: center; gap: 8px; }
+.sub-section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.score-badge { font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 20px; color: white; white-space: nowrap; }
+.badge-high { background: #2E7D32; }
+.badge-mid  { background: var(--blue-mid); }
+.badge-low  { background: #E65100; }
+.badge-zero { background: #C62828; }
+table { width: 100%; border-collapse: collapse; font-size: 12.5px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); margin-bottom: 4px; }
+thead tr { background: var(--blue-dark); color: white; }
+thead th { padding: 9px 12px; text-align: left; font-weight: 500; font-size: 12px; letter-spacing: 0.3px; }
+thead th.center { text-align: center; }
+tbody tr:nth-child(odd)  { background: var(--gray-100); }
+tbody tr:nth-child(even) { background: white; }
+tbody tr:hover { background: var(--blue-pale); }
+tbody td { padding: 8px 12px; border-top: 1px solid var(--border); vertical-align: middle; }
+tbody td.center { text-align: center; }
+.correct   { color: #2E7D32; font-weight: 600; }
+.incorrect { color: #C62828; font-weight: 600; }
+.comment-block { border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; border-left: 4px solid; }
+.comment-block.good    { background: var(--green-light); border-color: #388E3C; }
+.comment-block.improve { background: var(--red-light);   border-color: #E53935; }
+.comment-block.advice  { background: var(--blue-pale);   border-color: var(--blue-mid); }
+.comment-block.warn    { background: var(--gold-light);  border-color: var(--gold); }
+.comment-title { font-weight: 700; font-size: 13px; letter-spacing: 0.3px; margin-bottom: 8px; }
+.comment-block.good    .comment-title { color: var(--green-dark); }
+.comment-block.improve .comment-title { color: var(--red-dark); }
+.comment-block.advice  .comment-title { color: var(--blue-dark); }
+.comment-block.warn    .comment-title { color: #E65100; }
+.comment-block ul { padding-left: 18px; }
+.comment-block li { font-size: 12.5px; color: var(--gray-700); margin-bottom: 5px; line-height: 1.65; }
+.comment-block p { font-size: 12.5px; color: var(--gray-700); line-height: 1.75; }
+.profile-grid { display: grid; grid-template-columns: 180px 1fr; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+.profile-label { background: var(--blue-pale); padding: 10px 16px; font-weight: 600; font-size: 12px; color: var(--blue-dark); border-top: 1px solid var(--border); }
+.profile-value { background: white; padding: 10px 16px; font-size: 12.5px; color: var(--gray-700); border-top: 1px solid var(--border); }
+.profile-label:first-child, .profile-value:nth-child(2) { border-top: none; }
+.divider { height: 1px; background: var(--border); margin: 32px 0; }
+.report-footer { border-top: 1px solid var(--border); padding: 16px 48px; display: flex; justify-content: space-between; align-items: center; background: var(--gray-100); font-size: 11px; color: var(--gray-400); }
+.print-btn { position: fixed; bottom: 32px; right: 32px; background: var(--blue-dark); color: white; border: none; border-radius: 50px; padding: 12px 24px; font-size: 13px; font-family: 'Noto Sans SC', sans-serif; font-weight: 500; cursor: pointer; box-shadow: 0 4px 20px rgba(30,95,158,0.35); letter-spacing: 0.5px; transition: transform 0.15s, box-shadow 0.15s; z-index: 100; }
+.print-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(30,95,158,0.45); }
+.cambridge-total-box { background: var(--blue-pale); border: 1px solid var(--blue-light); border-radius: 10px; padding: 16px 22px; margin-top: 12px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.cambridge-total-box .ct-label { font-size: 12px; color: var(--blue-dark); font-weight: 600; }
+.cambridge-total-box .ct-score { font-family: 'Noto Serif SC', serif; font-size: 28px; font-weight: 700; color: var(--blue-dark); }
+.cambridge-total-box .ct-note { font-size: 11px; color: var(--gray-400); line-height: 1.5; }
+@media print { body { background: white; font-size: 12px; } .page { margin: 0; border-radius: 0; box-shadow: none; max-width: 100%; } .no-print { display: none !important; } .section { break-inside: avoid; } .report-header, .score-card.highlight, .level-cell.active, .comment-block, .profile-label, .score-badge, .rate-fill, thead tr { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+</style>
+</head>
+<body>
+
+<button class="print-btn no-print" onclick="window.print()">🖨 打印 / 导出 PDF</button>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="report-header">
+    <div class="school-tag">新航道成都学校 · XINHANGDAO CHENGDU</div>
+    <div class="report-title">KET 入学测试报告</div>
+    <div class="report-subtitle">KET PLACEMENT TEST REPORT</div>
+    <div class="header-meta">
+      <div class="meta-item">
+        <span class="meta-label">学生姓名</span>
+        <span class="meta-value">张煜晨</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">测试日期</span>
+        <span class="meta-value">2026-06-07</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">测试体系</span>
+        <span class="meta-value">KET for Schools 样题</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">卷面总分</span>
+        <span class="meta-value">78 / 85</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">剑桥预估均分</span>
+        <span class="meta-value">141 分</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">推荐级别</span>
+        <span class="meta-value">KET Distinction 卓越 → 备考 PET</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <!-- 综合成绩一览 -->
+    <div class="section">
+      <div class="section-title">综合成绩一览 <span>SCORE OVERVIEW（含剑桥换算分）</span></div>
+
+      <div class="score-summary">
+        <!-- 听力 -->
+        <div class="score-card">
+          <div class="score-card-label">听力 · Listening</div>
+          <div class="score-fraction green">23<sub>/25</sub></div>
+          <div class="score-rate">得分率 92%</div>
+          <div class="cambridge-score">剑桥分：140</div>
+          <span class="cefr-badge">Level B1</span>
+          <div class="rate-bar"><div class="rate-fill" style="width:92%;background:#2E7D32;"></div></div>
+        </div>
+
+        <!-- 阅读 -->
+        <div class="score-card">
+          <div class="score-card-label">阅读 · Reading</div>
+          <div class="score-fraction green">28<sub>/30</sub></div>
+          <div class="score-rate">得分率 93%</div>
+          <div class="cambridge-score">剑桥分：140</div>
+          <span class="cefr-badge">Level B1</span>
+          <div class="rate-bar"><div class="rate-fill" style="width:93%;background:#2E7D32;"></div></div>
+        </div>
+
+        <!-- 写作：8/10 → 等效 24/30 → 剑桥分 135 -->
+        <div class="score-card">
+          <div class="score-card-label">写作 · Writing</div>
+          <div class="score-fraction green">27<sub>/30</sub></div>
+          <div class="score-rate">得分率 80%</div>
+          <div class="cambridge-score">剑桥分：143</div>
+          <span class="cefr-badge">Level B1</span>
+          <div class="rate-bar"><div class="rate-fill" style="width:80%;background:#2E7D32;"></div></div>
+        </div>
+
+        <!-- 总分高亮卡 -->
+        <div class="score-card highlight">
+          <div class="score-card-label">卷面总分 / 剑桥均分</div>
+          <div class="score-fraction">78<sub>/85</sub></div>
+          <div class="score-rate">得分率 92%</div>
+          <div class="cambridge-score">剑桥均分：141</div>
+          <span class="cefr-badge">B1 水平</span>
+          <div class="rate-bar"><div class="rate-fill" style="width:91%;"></div></div>
+        </div>
+      </div>
+
+      <!-- 剑桥分换算说明 -->
+      <div class="cambridge-total-box">
+        <div>
+          <div class="ct-label">剑桥分换算说明（依据知识库换算表 KET Sheet）</div>
+          <div style="margin-top:6px;font-size:12px;color:var(--gray-700);">
+            听力 23分 → <strong>140分（B1）</strong>　|　
+            阅读 28分 → <strong>140分（B1）</strong>　|　
+            写作 27/30 → <strong>143分（B1）</strong>
+          </div>
+          <div style="margin-top:4px;font-size:11px;color:var(--gray-400);">
+            · KET Pass 120–132 分，Merit 133–139 分，<strong>Distinction 140–150 分</strong><br>
+            · 张煜晨三科均分 141，处于 <strong>Distinction（卓越）</strong>区间，强烈建议直接备考 PET
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 课程建议 -->
+    <div class="section">
+      <div class="section-title">课程建议 <span>COURSE RECOMMENDATION</span></div>
+      <div class="comment-block advice">
+        <div class="comment-title">📌 建议直接进入 PET 考冲班</div>
+        <p>张煜晨本次 KET 样题剑桥均分 <strong>141 分</strong>，达到 KET Distinction 卓越级别（140–150分），三科均处于 B1 水平。无需重复 KET 课程，建议直接进入 <strong>PET 考冲班</strong>，以剑桥 B1 Preliminary 为目标，集中冲刺备考，节省约 3–4 个月周期。</p>
+      </div>
+    </div>
+
+    <!-- 各板块详细分析 -->
+    <div class="section">
+      <div class="section-title">各板块详细分析 <span>SECTION ANALYSIS</span></div>
+
+      <!-- 听力 -->
+      <div class="sub-section-title">听力 Listening &nbsp;<span class="score-badge badge-high">23/25 · 剑桥分 140 · B1</span></div>
+      <div class="comment-block good">
+        <div class="comment-title">✅ 已掌握</div>
+        <ul>
+          <li>图片选择题（Part 1）5/5 全对，场景理解准确，干扰项识别能力强。</li>
+          <li>信息填写题（Part 2）除 Q8 外全对，能准确捕捉关键词汇（Fairford、Friday、train、boots）。</li>
+          <li>短对话多选题（Part 3–4）共 10 题失 1 分，细节理解整体出色。</li>
+          <li>匹配题（Part 5）5/5 全对，多人物信息追踪无误。</li>
+        </ul>
+      </div>
+      <div class="comment-block improve">
+        <div class="comment-title">❌ 主要失分点</div>
+        <ul>
+          <li><strong>Q8（时间填写）</strong>：学生填写 "7"，正确答案为 "7.30"。时间类填空须写完整格式，含分钟部分。</li>
+          <li><strong>Q15（Annie 的观影偏好）</strong>：学生选 B（on her laptop），正确为 A（at a cinema）。对话中现在偏好与过去偏好的对比信息需仔细辨析。</li>
+        </ul>
+      </div>
+
+      <!-- 阅读 -->
+      <div class="sub-section-title">阅读 Reading &nbsp;<span class="score-badge badge-high">28/30 · 剑桥分 140 · B1</span></div>
+      <div class="comment-block good">
+        <div class="comment-title">✅ 已掌握</div>
+        <ul>
+          <li>Part 1 标识理解（Q2–Q6）全对，能快速定位告示/短信的核心意图。</li>
+          <li>Part 2 多人物信息匹配（Q7–Q13）7/7 全对，交叉阅读能力突出。</li>
+          <li>Part 3 长文理解（Q14–Q18）5/5 全对，段落细节定位准确。</li>
+          <li>Part 4 词汇语法选择（Q19–Q24）6/6 全对，搭配与语境判断能力强。</li>
+          <li>Part 5 语法填空（Q25–Q30）除 Q27 外全对，功能词掌握扎实。</li>
+        </ul>
+      </div>
+      <div class="comment-block improve">
+        <div class="comment-title">❌ 主要失分点</div>
+        <ul>
+          <li><strong>R1（Part 1 第一题）</strong>：学生选 A（buy a dress for a party），正确为 B（pay less for something to read）。楼层标识中 "Half-price books" 在一楼，需对告示类文本逐项核对。</li>
+          <li><strong>R27（Part 5 语法填空）</strong>：空格为 "a ___ of Canadians"，正确答案 "lot"，学生填写 "tender"。词组 "a lot of" 需强化记忆。</li>
+        </ul>
+      </div>
+
+      <!-- 写作 -->
+      <div class="sub-section-title">写作 Writing &nbsp;<span class="score-badge badge-high">27/30 · 剑桥分 143 · B1</span></div>
+      <div class="comment-block good">
+        <div class="comment-title">✅ 已掌握</div>
+        <ul>
+          <li><strong>Q31（邮件）</strong>：三个写作要点全部覆盖（地点 William Street No.36、时间 9am、购买 sandwiches and fruits），字数达标，表达流畅。</li>
+          <li><strong>Q32（看图写故事）</strong>：内容完整覆盖三张图片，故事结构完整，词汇有一定丰富度，具备叙事感。</li>
+        </ul>
+      </div>
+      <div class="comment-block improve">
+        <div class="comment-title">❌ 主要失分点</div>
+        <ul>
+          <li><strong>Q31</strong>："some sandwich" 应为 "some sandwiches"，可数名词复数易疏忽。</li>
+          <li><strong>Q32</strong>：时态混乱是最主要扣分点——现在进行时、一般过去时、一般现在时混用，叙事写作应统一使用一般过去时。</li>
+          <li><strong>Q32</strong>："so others" 应为 "and so on"；"wore on their swimsuits" 应为 "put on their swimsuits"，动词搭配有误。</li>
+        </ul>
+      </div>
+      <div class="comment-block warn">
+        <div class="comment-title">⚠️ 写作提示</div>
+        <p>写作得分换算至剑桥分 135，略低于听力/阅读（140），是三科中的相对短板。进入 PET 阶段后写作字数要求约 100 词，重点需攻克：① 叙事时态统一（过去时）；② 高频动词搭配（put on / take off / set off 等）；③ 段落连接词（first, then, after that, finally）的规范使用。</p>
+      </div>
+    </div>
+
+    <!-- 学情总结 -->
+    <div class="section">
+      <div class="section-title">学情总结 <span>LEARNER PROFILE</span></div>
+      <div class="profile-grid">
+        <div class="profile-label">当前剑桥级别</div>
+        <div class="profile-value">B1（KET Distinction 卓越），向 B1+ / PET 过渡</div>
+        <div class="profile-label">听力（剑桥分）</div>
+        <div class="profile-value">140 分 · B1 ⭐⭐⭐⭐⭐ — 图片匹配、信息填写、多人物追踪均出色</div>
+        <div class="profile-label">阅读（剑桥分）</div>
+        <div class="profile-value">140 分 · B1 ⭐⭐⭐⭐⭐ — 细节定位、长文理解、词汇语法几乎满分</div>
+        <div class="profile-label">写作（剑桥分）</div>
+        <div class="profile-value">143 分 · B1 ⭐⭐⭐⭐ — 任务完成度高（24/30），时态一致性待提升</div>
+        <div class="profile-label">词汇与语法</div>
+        <div class="profile-value">超出 KET 要求，"a lot of" 等高频词组个别遗漏，整体准确率高</div>
+        <div class="profile-label">学习特点</div>
+        <div class="profile-value">信息处理速度快，理解能力强，适合挑战式 PET 课程节奏</div>
+      </div>
+    </div>
+
+    <!-- 课程规划建议 -->
+    <div class="section">
+      <div class="section-title">课程规划建议 <span>COURSE PLANNING</span></div>
+      <div class="comment-block advice">
+        <div class="comment-title">① 【首要】直接进入 PET 备考课程</div>
+        <p>三科剑桥分均在 135–140，已达 KET Distinction，建议直接切入 PET（B1 Preliminary）备考，目标剑桥分 ≥150（PET Pass）。重点攻克 PET 阅读 Part 5–6 的长文推断，以及 PET 写作 100 词邮件和故事。</p>
+      </div>
+      <div class="comment-block advice">
+        <div class="comment-title">② 写作时态专项训练</div>
+        <p>叙事时态混乱是当前唯一系统性写作弱点，建议安排 2–3 次专项练习：看图写故事统一使用一般过去时，每次写作后自查时态一致性，尽早养成习惯。</p>
+      </div>
+      <div class="comment-block advice">
+        <div class="comment-title">③ 听力细节题强化</div>
+        <p>目前失分集中在对比信息辨析（Q15）和时间格式完整性（Q8）。建议针对 PET 听力 Part 2–3 进行专项练习，训练在快节奏对话中捕捉完整细节的能力。</p>
+      </div>
+      <div class="comment-block advice">
+        <div class="comment-title">④ 高频词组与动词搭配积累</div>
+        <p>"a lot of"、"put on"、"and so on" 等搭配建议通过词组卡片系统积累。PET 词汇目标约 2500 词（B1 核心），建议配合 PET 词汇书同步推进。</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 附录：详细题目得分表 -->
+    <div class="section">
+      <div class="section-title">附录：详细题目得分表 <span>DETAILED SCORE TABLE</span></div>
+
+      <div class="sub-section-title">听力 · Listening（23/25 → 剑桥分 140）</div>
+      <table>
+        <thead>
+          <tr>
+            <th>题号</th><th>板块</th><th>学生答案</th><th class="center">正确答案</th><th class="center">得分</th><th>备注</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Q1</td><td>Part 1 图片选择</td><td>C</td><td class="center">C</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>Q2</td><td>Part 1 图片选择</td><td>A</td><td class="center">A</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>Q3</td><td>Part 1 图片选择</td><td>C</td><td class="center">C</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>Q4</td><td>Part 1 图片选择</td><td>A</td><td class="center">A</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>Q5</td><td>Part 1 图片选择</td><td>A</td><td class="center">A</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>Q6</td><td>Part 2 信息填写</td><td>Fairford</td><td class="center">Fairford</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>Q7</td><td>Part 2 信息填写</td><td>Friday</td><td class="center">Friday</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>Q8</td><td>Part 2 信息填写</td><td>7</td><td class="center">7.30</td><td class="center incorrect">✘</td><td>时间格式不完整，缺 ".30"</td></tr>
+          <tr><td>Q9</td><td>Part 2 信息填写</td><td>train</td><td class="center">train</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>Q10</td><td>Part 2 信息填写</td><td>boots</td><td class="center">boots</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>Q11</td><td>Part 3 多选题</td><td>B</td><td class="center">B</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>Q12</td><td>Part 3 多选题</td><td>A</td><td class="center">A</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>Q13</td><td>Part 3 多选题</td><td>C</td><td class="center">C</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>Q14</td><td>Part 3 多选题</td><td>B</td><td class="center">B</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>Q15</td><td>Part 3 多选题</td><td>B</td><td class="center">A</td><td class="center incorrect">✘</td><td>现在/过去偏好对比混淆</td></tr>
+          <tr><td>Q16</td><td>Part 4 短对话</td><td>B</td><td class="center">B</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>Q17</td><td>Part 4 短对话</td><td>C</td><td class="center">C</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>Q18</td><td>Part 4 短对话</td><td>B</td><td class="center">B</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>Q19</td><td>Part 4 短对话</td><td>A</td><td class="center">A</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>Q20</td><td>Part 4 短对话</td><td>B</td><td class="center">B</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>Q21</td><td>Part 5 匹配题</td><td>E</td><td class="center">E</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>Q22</td><td>Part 5 匹配题</td><td>F</td><td class="center">F</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>Q23</td><td>Part 5 匹配题</td><td>G</td><td class="center">G</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>Q24</td><td>Part 5 匹配题</td><td>A</td><td class="center">A</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>Q25</td><td>Part 5 匹配题</td><td>B</td><td class="center">B</td><td class="center correct">✔</td><td></td></tr>
+        </tbody>
+      </table>
+
+      <div class="sub-section-title" style="margin-top:24px;">阅读 · Reading（28/30 → 剑桥分 140）</div>
+      <table>
+        <thead>
+          <tr>
+            <th>题号</th><th>板块</th><th>学生答案</th><th class="center">正确答案</th><th class="center">得分</th><th>备注</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>R1</td><td>Part 1 标识理解</td><td>A</td><td class="center">B</td><td class="center incorrect">✘</td><td>误读楼层标识，书籍在一楼</td></tr>
+          <tr><td>R2</td><td>Part 1 标识理解</td><td>C</td><td class="center">C</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>R3</td><td>Part 1 标识理解</td><td>A</td><td class="center">A</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>R4</td><td>Part 1 标识理解</td><td>A</td><td class="center">A</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>R5</td><td>Part 1 标识理解</td><td>B</td><td class="center">B</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>R6</td><td>Part 1 标识理解</td><td>B</td><td class="center">B</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>R7</td><td>Part 2 多人匹配</td><td>B</td><td class="center">B</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>R8</td><td>Part 2 多人匹配</td><td>C</td><td class="center">C</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>R9</td><td>Part 2 多人匹配</td><td>A</td><td class="center">A</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>R10</td><td>Part 2 多人匹配</td><td>A</td><td class="center">A</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>R11</td><td>Part 2 多人匹配</td><td>B</td><td class="center">B</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>R12</td><td>Part 2 多人匹配</td><td>A</td><td class="center">A</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>R13</td><td>Part 2 多人匹配</td><td>C</td><td class="center">C</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>R14</td><td>Part 3 长文理解</td><td>B</td><td class="center">B</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>R15</td><td>Part 3 长文理解</td><td>C</td><td class="center">C</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>R16</td><td>Part 3 长文理解</td><td>A</td><td class="center">A</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>R17</td><td>Part 3 长文理解</td><td>C</td><td class="center">C</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>R18</td><td>Part 3 长文理解</td><td>B</td><td class="center">B</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>R19</td><td>Part 4 词汇语法</td><td>C</td><td class="center">C</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>R20</td><td>Part 4 词汇语法</td><td>B</td><td class="center">B</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>R21</td><td>Part 4 词汇语法</td><td>A</td><td class="center">A</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>R22</td><td>Part 4 词汇语法</td><td>C</td><td class="center">C</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>R23</td><td>Part 4 词汇语法</td><td>B</td><td class="center">B</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>R24</td><td>Part 4 词汇语法</td><td>B</td><td class="center">B</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>R25</td><td>Part 5 语法填空</td><td>your</td><td class="center">your / the</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>R26</td><td>Part 5 语法填空</td><td>Is</td><td class="center">Is</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>R27</td><td>Part 5 语法填空</td><td>tender</td><td class="center">lot</td><td class="center incorrect">✘</td><td>"a lot of" 词组未识别</td></tr>
+          <tr><td>R28</td><td>Part 5 语法填空</td><td>on</td><td class="center">on</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>R29</td><td>Part 5 语法填空</td><td>they</td><td class="center">they</td><td class="center correct">✔</td><td></td></tr>
+          <tr><td>R30</td><td>Part 5 语法填空</td><td>to</td><td class="center">to</td><td class="center correct">✔</td><td></td></tr>
+        </tbody>
+      </table>
+
+      <div class="sub-section-title" style="margin-top:24px;">写作 · Writing（27/30 → 剑桥分 143）</div>
+      <table>
+        <thead>
+          <tr>
+            <th>题号</th><th>任务类型</th><th class="center">得分</th><th class="center">满分</th><th class="center">等效卷面</th><th class="center">剑桥分</th><th>简评</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Q31</td>
+            <td>邮件写作（Part 6）</td>
+            <td class="center correct">14</td>
+            <td class="center">15</td>
+            <td class="center">14/15</td>
+            <td class="center">110</td>
+            <td>三要点全覆盖，有小语法错误（sandwich → sandwiches）</td>
+          </tr>
+          <tr>
+            <td>Q32</td>
+            <td>看图写故事（Part 7）</td>
+            <td class="center correct">13</td>
+            <td class="center">15</td>
+            <td class="center">13/15</td>
+            <td class="center">110</td>
+            <td>内容丰富，三图全覆盖，时态不一致为主要扣分点</td>
+          </tr>
+          <tr>
+            <td colspan="2" style="font-weight:600;color:var(--blue-dark);">写作合计</td>
+            <td class="center correct" style="font-weight:700;">27</td>
+            <td class="center">30</td>
+            <td class="center" style="font-weight:600;">27/30</td>
+            <td class="center" style="font-weight:600;color:var(--blue-dark);">143</td>
+            <td>查换算表：27/30 → 剑桥分 143</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+  </div><!-- end .body -->
+
+  <div class="report-footer">
+    <span>KET 入学测试报告 · 张煜晨 · 2026-06-07</span>
+    <span>新航道成都学校 | 如有疑问请联系课程主管龚老师 18512820890</span>
+  </div>
+
+</div><!-- end .page -->
+</body>
+</html>
