@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新航道 · 考试指南导航</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:    #0D2744;
+  --paper:  #f5f2eb;
+  --white:  #ffffff;
+  --gold:   #c9982a;
+  --gold-lt:#f0d98a;
+  --red:    #b5301f;
+  --muted:  #7a7a8a;
+  --border: #ddd8cc;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{font-size:17px;}
+body{font-family:'Noto Sans SC',sans-serif;background:var(--paper);color:var(--ink);line-height:1.85;min-height:100vh;}
+
+/* ── HERO ── */
+.hero{background:var(--ink);color:#fff;padding:90px 56px 64px;position:relative;overflow:hidden;}
+.hero::after{content:'XHD';position:absolute;right:-20px;top:-10px;font-family:'Noto Serif SC',serif;font-size:min(28vw,300px);font-weight:900;color:rgba(255,255,255,.04);letter-spacing:-14px;pointer-events:none;line-height:1;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--red);font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:5px 14px;margin-bottom:28px;}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--gold-lt);border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+.hero h1{font-family:'Noto Serif SC',serif;font-size:clamp(30px,5vw,52px);font-weight:900;line-height:1.2;margin-bottom:18px;letter-spacing:-1px;}
+.hero h1 em{color:var(--gold);font-style:normal;}
+.hero-desc{font-size:1rem;color:rgba(255,255,255,.55);max-width:min(700px,90%);line-height:1.8;}
+
+/* ── LAYOUT ── */
+.wrap{max-width:1120px;margin:0 auto;padding:0 32px;}
+.grid-section{padding:64px 0 80px;}
+
+.sec-eyebrow{font-size:.7rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.sec-title{font-family:'Noto Serif SC',serif;font-size:clamp(22px,3vw,32px);font-weight:700;margin-bottom:40px;}
+
+/* ── CARD GRID ── */
+.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.guide-card{
+  display:block;
+  background:var(--white);
+  border:1px solid var(--border);
+  text-decoration:none;
+  color:inherit;
+  position:relative;
+  overflow:hidden;
+  transition:transform .2s, box-shadow .2s;
+}
+.guide-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 28px rgba(13,39,68,.12);
+}
+.gc-stripe{height:5px;}
+.gc-body{padding:32px 28px 28px;}
+.gc-tag{
+  display:inline-block;
+  font-size:.65rem;
+  font-weight:700;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  padding:3px 10px;
+  margin-bottom:18px;
+}
+.gc-name{
+  font-family:'Noto Serif SC',serif;
+  font-size:1.6rem;
+  font-weight:900;
+  margin-bottom:10px;
+  letter-spacing:-.5px;
+}
+.gc-full{
+  font-size:.78rem;
+  color:var(--muted);
+  margin-bottom:18px;
+  line-height:1.6;
+}
+.gc-desc{
+  font-size:.86rem;
+  color:#444;
+  line-height:1.8;
+  margin-bottom:22px;
+  min-height:62px;
+}
+.gc-meta{
+  display:flex;
+  gap:16px;
+  padding-top:18px;
+  border-top:1px solid var(--border);
+  font-size:.74rem;
+  color:var(--muted);
+}
+.gc-meta span{display:flex;align-items:center;gap:4px;}
+.gc-arrow{
+  position:absolute;
+  top:28px;right:28px;
+  font-size:1.1rem;
+  color:var(--border);
+  transition:color .2s, transform .2s;
+}
+.guide-card:hover .gc-arrow{ color:var(--gold); transform:translate(3px,-3px); }
+
+/* category colors */
+.toefl .gc-stripe, .toefl .gc-tag{background:#1a6fa8;}
+.toefl .gc-tag{color:#fff;}
+.ielts .gc-stripe, .ielts .gc-tag{background:#0D2744;}
+.ielts .gc-tag{color:#fff;}
+.gre .gc-stripe, .gre .gc-tag{background:#6c3483;}
+.gre .gc-tag{color:#fff;}
+.sat .gc-stripe, .sat .gc-tag{background:#145a32;}
+.sat .gc-tag{color:#fff;}
+.act .gc-stripe, .act .gc-tag{background:#b5301f;}
+.act .gc-tag{color:#fff;}
+.ketpet .gc-stripe, .ketpet .gc-tag{background:#b7950b;}
+.ketpet .gc-tag{color:#fff;}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--ink);
+  color:rgba(255,255,255,.35);
+  text-align:center;
+  padding:32px 24px;
+  font-size:.75rem;
+  letter-spacing:1px;
+  line-height:1.8;
+}
+footer span{color:var(--gold);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .card-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:600px){
+  .hero{padding:56px 24px 44px;}
+  .wrap{padding:0 20px;}
+  .card-grid{grid-template-columns:1fr;}
+  .grid-section{padding:44px 0 56px;}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">新航道 · 国际课程资料库</div>
+  <h1>留学考试<em>完整指南</em></h1>
+  <p class="hero-desc">点击下方考试名称，进入对应的完整指南 — 涵盖考试结构、各科题型详解、目标分数规划与备考策略</p>
+</div>
+
+<!-- GRID -->
+<div class="wrap">
+<div class="grid-section">
+  <div class="sec-eyebrow">Exam Guides</div>
+  <h2 class="sec-title">选择一门考试，开始了解</h2>
+
+  <div class="card-grid">
+
+    <a class="guide-card toefl" href="toefl_guide.html">
+      <div class="gc-stripe"></div>
+      <div class="gc-body">
+        <span class="gc-arrow">↗</span>
+        <div class="gc-tag">2026 改革版</div>
+        <div class="gc-name">TOEFL</div>
+        <div class="gc-full">新版托福完整指南</div>
+        <div class="gc-desc">考试顺序与题型革新、1–6分制对照、托福 vs 雅思怎么选</div>
+        <div class="gc-meta">
+          <span>📖 4科详解</span>
+          <span>🎯 分数规划</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="guide-card ielts" href="ielts_guide.html">
+      <div class="gc-stripe"></div>
+      <div class="gc-body">
+        <span class="gc-arrow">↗</span>
+        <div class="gc-tag">2026 机考过渡版</div>
+        <div class="gc-name">IELTS</div>
+        <div class="gc-full">雅思完整指南</div>
+        <div class="gc-desc">听说读写题型详解、A类G类区别、BC与IDP怎么选</div>
+        <div class="gc-meta">
+          <span>📖 4科详解</span>
+          <span>🏛 BC vs IDP</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="guide-card gre" href="gre_guide.html">
+      <div class="gc-stripe"></div>
+      <div class="gc-body">
+        <span class="gc-arrow">↗</span>
+        <div class="gc-tag">2023 改革版</div>
+        <div class="gc-name">GRE</div>
+        <div class="gc-full">GRE完整入门指南</div>
+        <div class="gc-desc">语文数学写作题型详解、中国考生强弱项分析、6个月备考路线图</div>
+        <div class="gc-meta">
+          <span>📖 3科详解</span>
+          <span>🗓 备考时间线</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="guide-card sat" href="sat_guide.html">
+      <div class="gc-stripe"></div>
+      <div class="gc-body">
+        <span class="gc-arrow">↗</span>
+        <div class="gc-tag">数字化机考版</div>
+        <div class="gc-name">SAT</div>
+        <div class="gc-full">数字化SAT完整指南</div>
+        <div class="gc-desc">阅读写作数学题型详解、自适应模块机制、中国考生须知</div>
+        <div class="gc-meta">
+          <span>📖 2模块详解</span>
+          <span>🎯 分数规划</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="guide-card act" href="act_guide.html">
+      <div class="gc-stripe"></div>
+      <div class="gc-body">
+        <span class="gc-arrow">↗</span>
+        <div class="gc-tag">2025 重大改革版</div>
+        <div class="gc-name">ACT</div>
+        <div class="gc-full">新版ACT完整指南</div>
+        <div class="gc-desc">英数读科题型详解、科学选考新规、ACT vs SAT 怎么选</div>
+        <div class="gc-meta">
+          <span>📖 4科详解</span>
+          <span>⚖️ ACT vs SAT</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="guide-card ketpet" href="ket_pet_guide.html">
+      <div class="gc-stripe"></div>
+      <div class="gc-body">
+        <span class="gc-arrow">↗</span>
+        <div class="gc-tag">剑桥通用五级</div>
+        <div class="gc-name">KET / PET</div>
+        <div class="gc-full">剑桥KET/PET完整指南</div>
+        <div class="gc-desc">听说读写题型对比、分数等级解读、KET→PET学习路径规划</div>
+        <div class="gc-meta">
+          <span>📖 双考试详解</span>
+          <span>🗺 升学路径</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</div>
+</div>
+
+<footer>
+  新航道（成都）国际课程资料库 · 内容持续更新中<br>
+  内容整理自各考试官方公告及公开资料 · <span>具体要求以官方最新通知为准</span>
+</footer>
+
+</body>
+</html>
