@@ -233,6 +233,417 @@ tbody td.center { text-align: center; }
 }
 
 @media print { body { background: white; font-size: 12px; } .page { margin: 0; border-radius: 0; box-shadow: none; max-width: 100%; } .no-print { display: none !important; } .section { break-inside: avoid; } .report-header, .score-card.highlight, .level-cell.active, .comment-block, .profile-label, .score-badge, .rate-fill, thead tr { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+
+/* ===== Responsive layout hotfix: desktop + mobile score cards ===== */
+/* 电脑端：成绩卡永远正常五列，不使用 mobile 的命名区域，避免卡片跑位/消失 */
+@media (min-width: 769px) {
+  .score-summary {
+    display: grid !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    grid-template-areas: none !important;
+    gap: 10px !important;
+    align-items: stretch !important;
+  }
+  .score-summary > .score-card {
+    grid-area: auto !important;
+    grid-column: auto !important;
+    width: auto !important;
+  }
+}
+
+/* 手机端：前四项两列两行，总分卡横跨整行 */
+@media (max-width: 768px) {
+  .score-summary {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-template-areas:
+      "vocab grammar"
+      "reading listening"
+      "total total" !important;
+    gap: 12px !important;
+  }
+  .score-card:nth-child(1) { grid-area: vocab !important; }
+  .score-card:nth-child(2) { grid-area: grammar !important; }
+  .score-card:nth-child(3) { grid-area: reading !important; }
+  .score-card:nth-child(4) { grid-area: listening !important; }
+  .score-card:nth-child(5) {
+    grid-area: total !important;
+    grid-column: auto !important;
+    width: 100% !important;
+  }
+  .score-card {
+    min-height: 132px !important;
+    padding: 14px 12px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .score-summary { gap: 10px !important; }
+  .score-card { min-height: 126px !important; padding: 12px 10px !important; }
+}
+
+
+/* ===== Score card compact visual upgrade ===== */
+/* 电脑端：压缩留白、放大数字，让五张卡看起来更饱满 */
+@media (min-width: 769px) {
+  .score-summary {
+    gap: 12px !important;
+  }
+  .score-card {
+    min-height: 142px !important;
+    padding: 18px 18px 16px !important;
+    grid-template-rows: auto 1fr auto auto !important;
+    row-gap: 8px !important;
+  }
+  .score-card-label {
+    min-height: 34px !important;
+    font-size: 13px !important;
+    line-height: 1.35 !important;
+    margin-bottom: 0 !important;
+    display: flex !important;
+    align-items: flex-start !important;
+  }
+  .score-number-line {
+    align-self: center !important;
+    margin-top: -2px !important;
+  }
+  .score-fraction {
+    font-size: 36px !important;
+    line-height: 1 !important;
+    margin-bottom: 0 !important;
+  }
+  .score-fraction sub {
+    font-size: 15px !important;
+    line-height: 1 !important;
+  }
+  .score-rate {
+    font-size: 12px !important;
+    margin-top: 0 !important;
+  }
+  .rate-bar {
+    height: 5px !important;
+    margin-top: 4px !important;
+  }
+}
+
+/* 手机端：仍保持紧凑两列，但数字不再过小 */
+@media (max-width: 768px) {
+  .score-card {
+    min-height: 118px !important;
+    padding: 12px 12px 11px !important;
+    row-gap: 5px !important;
+  }
+  .score-card-label {
+    min-height: 28px !important;
+    font-size: 11px !important;
+    line-height: 1.3 !important;
+    margin-bottom: 0 !important;
+  }
+  .score-fraction {
+    font-size: 24px !important;
+    line-height: 1 !important;
+  }
+  .score-fraction sub {
+    font-size: 11px !important;
+  }
+  .score-rate {
+    font-size: 10.5px !important;
+    margin-top: 0 !important;
+  }
+  .rate-bar {
+    height: 5px !important;
+    margin-top: 3px !important;
+  }
+  .score-card.highlight {
+    min-height: 116px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .score-card {
+    min-height: 108px !important;
+    padding: 11px 10px 10px !important;
+  }
+  .score-fraction {
+    font-size: 22px !important;
+  }
+  .score-fraction sub {
+    font-size: 10px !important;
+  }
+}
+
+
+/* ===== FINAL SCORE SUMMARY FIX 2026-07-08 =====
+   电脑端：五卡一行、数字放大、压缩留白
+   手机端：前四项两列两行，总分横跨整行
+*/
+.score-summary {
+  display: grid !important;
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  grid-template-areas: none !important;
+  gap: 12px !important;
+  align-items: stretch !important;
+}
+.score-summary > .score-card,
+.score-summary > .score-card.highlight {
+  grid-area: auto !important;
+  grid-column: auto !important;
+  width: auto !important;
+  min-width: 0 !important;
+  min-height: 118px !important;
+  padding: 14px 16px 12px !important;
+  display: grid !important;
+  grid-template-rows: 30px 44px 18px 7px !important;
+  row-gap: 4px !important;
+  align-content: start !important;
+}
+.score-summary .score-card-label {
+  min-height: 0 !important;
+  height: auto !important;
+  margin: 0 !important;
+  font-size: 12px !important;
+  line-height: 1.25 !important;
+  display: block !important;
+}
+.score-summary .score-number-line {
+  margin: 0 !important;
+  align-self: start !important;
+  display: flex !important;
+  align-items: baseline !important;
+  gap: 3px !important;
+}
+.score-summary .score-fraction {
+  font-size: 40px !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+}
+.score-summary .score-fraction sub {
+  font-size: 16px !important;
+  line-height: 1 !important;
+}
+.score-summary .score-rate {
+  margin: 0 !important;
+  font-size: 12px !important;
+  line-height: 1.2 !important;
+}
+.score-summary .rate-bar {
+  height: 6px !important;
+  margin: 0 !important;
+}
+
+/* 手机端才进入两列布局，避免电脑端被误判成两列 */
+@media (max-width: 700px) {
+  .score-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-template-areas:
+      "vocab grammar"
+      "reading listening"
+      "total total" !important;
+    gap: 10px !important;
+  }
+  .score-summary > .score-card:nth-child(1) { grid-area: vocab !important; }
+  .score-summary > .score-card:nth-child(2) { grid-area: grammar !important; }
+  .score-summary > .score-card:nth-child(3) { grid-area: reading !important; }
+  .score-summary > .score-card:nth-child(4) { grid-area: listening !important; }
+  .score-summary > .score-card:nth-child(5) {
+    grid-area: total !important;
+    grid-column: auto !important;
+    width: 100% !important;
+  }
+  .score-summary > .score-card,
+  .score-summary > .score-card.highlight {
+    min-height: 106px !important;
+    padding: 11px 10px 10px !important;
+    grid-template-rows: 26px 34px 16px 6px !important;
+    row-gap: 3px !important;
+  }
+  .score-summary .score-card-label {
+    font-size: 10.5px !important;
+    line-height: 1.2 !important;
+  }
+  .score-summary .score-fraction {
+    font-size: 30px !important;
+  }
+  .score-summary .score-fraction sub {
+    font-size: 12px !important;
+  }
+  .score-summary .score-rate {
+    font-size: 10.5px !important;
+  }
+  .score-summary .rate-bar {
+    height: 5px !important;
+  }
+
+  .level-row {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+  .level-cell {
+    padding: 12px 4px !important;
+    border-right: 1px solid var(--border) !important;
+    border-bottom: none !important;
+  }
+  .level-cell:last-child { border-right: none !important; }
+  .level-name {
+    font-size: 11px !important;
+    line-height: 1.2 !important;
+  }
+  .level-range {
+    font-size: 9.5px !important;
+    line-height: 1.3 !important;
+  }
+  .level-badge {
+    font-size: 8.5px !important;
+    padding: 2px 5px !important;
+    white-space: normal !important;
+    line-height: 1.25 !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .score-summary {
+    gap: 8px !important;
+  }
+  .score-summary > .score-card,
+  .score-summary > .score-card.highlight {
+    min-height: 100px !important;
+    padding: 10px 9px 9px !important;
+  }
+  .score-summary .score-fraction {
+    font-size: 28px !important;
+  }
+}
+
+
+/* ===== FINAL RESPONSIVE OVERRIDE: score cards =====
+   >900px: 五卡一行
+   <=900px: 前四项两列两行，总分横跨整行
+*/
+@media (min-width: 901px) {
+  .score-summary {
+    display: grid !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    grid-template-areas: none !important;
+    gap: 12px !important;
+    align-items: stretch !important;
+  }
+  .score-summary > .score-card,
+  .score-summary > .score-card.highlight {
+    grid-area: auto !important;
+    grid-column: auto !important;
+    width: auto !important;
+    min-height: 128px !important;
+    padding: 15px 16px 13px !important;
+    display: grid !important;
+    grid-template-rows: 32px 46px 18px 7px !important;
+    row-gap: 4px !important;
+  }
+  .score-summary .score-card-label {
+    min-height: 0 !important;
+    margin: 0 !important;
+    font-size: 12px !important;
+    line-height: 1.25 !important;
+    display: block !important;
+  }
+  .score-summary .score-fraction {
+    font-size: 40px !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+  }
+  .score-summary .score-fraction sub {
+    font-size: 16px !important;
+  }
+  .score-summary .score-rate {
+    margin: 0 !important;
+    font-size: 12px !important;
+    line-height: 1.2 !important;
+  }
+  .score-summary .rate-bar {
+    height: 6px !important;
+    margin: 0 !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .score-summary {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-template-areas:
+      "vocab grammar"
+      "reading listening"
+      "total total" !important;
+    gap: 12px !important;
+    align-items: stretch !important;
+  }
+  .score-summary > .score-card:nth-child(1) { grid-area: vocab !important; }
+  .score-summary > .score-card:nth-child(2) { grid-area: grammar !important; }
+  .score-summary > .score-card:nth-child(3) { grid-area: reading !important; }
+  .score-summary > .score-card:nth-child(4) { grid-area: listening !important; }
+  .score-summary > .score-card:nth-child(5),
+  .score-summary > .score-card.highlight {
+    grid-area: total !important;
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+  }
+  .score-summary > .score-card,
+  .score-summary > .score-card.highlight {
+    min-height: 124px !important;
+    padding: 14px 16px 12px !important;
+    display: grid !important;
+    grid-template-rows: 30px 44px 18px 7px !important;
+    row-gap: 4px !important;
+    align-content: start !important;
+  }
+  .score-summary .score-card-label {
+    min-height: 0 !important;
+    margin: 0 !important;
+    font-size: 12px !important;
+    line-height: 1.25 !important;
+    display: block !important;
+  }
+  .score-summary .score-fraction {
+    font-size: 40px !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+  }
+  .score-summary .score-fraction sub {
+    font-size: 16px !important;
+  }
+  .score-summary .score-rate {
+    margin: 0 !important;
+    font-size: 12px !important;
+    line-height: 1.2 !important;
+  }
+  .score-summary .rate-bar {
+    height: 6px !important;
+    margin: 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .score-summary { gap: 10px !important; }
+  .score-summary > .score-card,
+  .score-summary > .score-card.highlight {
+    min-height: 108px !important;
+    padding: 11px 10px 10px !important;
+    grid-template-rows: 25px 34px 15px 6px !important;
+    row-gap: 3px !important;
+  }
+  .score-summary .score-card-label {
+    font-size: 10.5px !important;
+    line-height: 1.2 !important;
+  }
+  .score-summary .score-fraction {
+    font-size: 30px !important;
+  }
+  .score-summary .score-fraction sub {
+    font-size: 12px !important;
+  }
+  .score-summary .score-rate {
+    font-size: 10.5px !important;
+  }
+}
+
 </style>
 </head>
 <body>
