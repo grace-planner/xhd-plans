@@ -118,6 +118,66 @@ tbody td.center { text-align: center; }
 .contact-name { font-family: 'Noto Serif SC', serif; font-size: 18px; font-weight: 700; color: #f0d080; letter-spacing: 3px; margin-bottom: 4px; }
 .contact-phone { font-size: 20px; font-weight: 700; color: white; letter-spacing: 1.5px; }
 .contact-role { font-size: 10px; color: rgba(255,255,255,0.35); letter-spacing: 3px; margin-top: 4px; text-transform: uppercase; }
+.table-scroll { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 8px; margin-bottom: 4px; }
+.table-scroll table { min-width: 640px; margin-bottom: 0; }
+@media (max-width: 768px) {
+  body { font-size: 13px; line-height: 1.65; }
+  .page { width: 100%; max-width: none; margin: 0; border-radius: 0; box-shadow: none; }
+  .report-header { padding: 28px 20px 24px; }
+  .header-topline { display: block; }
+  .header-pagetag { text-align: left; margin-top: 14px; }
+  .report-title { font-size: 24px; letter-spacing: 1px; }
+  .report-subtitle { letter-spacing: 1px; margin-bottom: 18px; }
+  .header-meta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 18px; }
+  .body { padding: 28px 18px 36px; }
+  .section { margin-bottom: 30px; }
+  .section-title { font-size: 14px; padding-left: 12px; line-height: 1.5; }
+  .section-title span { display: block; margin-left: 0; margin-top: 2px; }
+  .score-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .score-card { min-width: 0; padding: 14px 12px; }
+  .score-card.highlight { grid-column: 1 / -1; }
+  .score-fraction { font-size: 22px; }
+  .level-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .level-cell { padding: 12px 8px; }
+  .level-name { font-size: 12px; line-height: 1.35; }
+  .level-range { font-size: 10px; line-height: 1.45; }
+  .level-badge { font-size: 9px; padding: 2px 6px; }
+  .profile-grid { grid-template-columns: 1fr; }
+  .profile-label, .profile-value { border-top: 1px solid var(--border); }
+  .profile-label:first-child { border-top: none; }
+  .profile-label { padding: 9px 14px 4px; }
+  .profile-value { padding: 4px 14px 11px; }
+  .comment-block { padding: 16px 17px; }
+  .comment-block ul { padding-left: 17px; }
+  .sub-section-title { align-items: flex-start; flex-wrap: wrap; line-height: 1.5; }
+  .sub-section-title::after { display: none; }
+  .score-badge { margin-left: 0 !important; }
+  .report-footer { padding: 14px 18px; flex-direction: column; align-items: flex-start; gap: 4px; }
+  .print-btn { right: 16px; bottom: 16px; padding: 11px 18px; font-size: 12px; }
+  .cta-section { padding: 48px 18px; }
+  .contact-card { min-width: 0; width: 100%; max-width: 340px; padding: 20px 18px; }
+}
+@media (max-width: 480px) {
+  .report-header { padding: 24px 16px 22px; }
+  .school-tag { font-size: 10px; letter-spacing: 1px; }
+  .report-title { font-size: 21px; }
+  .report-subtitle { font-size: 10px; }
+  .header-meta { grid-template-columns: 1fr; gap: 10px; }
+  .meta-item { border-bottom: 1px solid rgba(255,255,255,0.14); padding-bottom: 8px; }
+  .meta-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .body { padding: 24px 14px 32px; }
+  .score-summary { grid-template-columns: 1fr; }
+  .score-card.highlight { grid-column: auto; }
+  .section-title { font-size: 13px; }
+  .comment-block { padding: 14px 15px; }
+  .level-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .level-cell { padding: 10px 5px; }
+  .level-name { font-size: 11px; }
+  .level-range { font-size: 9px; }
+  .table-scroll table { min-width: 580px; }
+  thead th, tbody td { padding: 8px 10px; }
+  .print-btn { left: 14px; right: 14px; width: calc(100% - 28px); text-align: center; border-radius: 10px; }
+}
 @media print { body { background: white; font-size: 12px; } .page { margin: 0; border-radius: 0; box-shadow: none; max-width: 100%; } .no-print { display: none !important; } .section { break-inside: avoid; } .report-header, .score-card.highlight, .level-cell.active, .comment-block, .profile-label, .score-badge, .rate-fill, thead tr { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
 </style>
 </head>
@@ -323,7 +383,7 @@ tbody td.center { text-align: center; }
       <div class="section-title">📋 六、附录：详细题目得分表 <span>SCORE BREAKDOWN</span></div>
 
       <div class="sub-section-title">📖 词汇 Vocabulary（20分）</div>
-      <table>
+      <div class="table-scroll"><table>
         <thead><tr><th>题号</th><th>题目</th><th>学生作答</th><th>正确答案</th><th class="center">分值</th><th class="center">得分</th></tr></thead>
         <tbody>
           <tr><td>V1</td><td>trainers</td><td>失败者</td><td>运动鞋</td><td class="center">1</td><td class="center incorrect">✗ 0</td></tr>
@@ -348,10 +408,10 @@ tbody td.center { text-align: center; }
           <tr><td>V20</td><td>科学家</td><td class="correct">scientist</td><td>scientist</td><td class="center">1</td><td class="center correct">✓ 1</td></tr>
           <tr class="total-row"><td colspan="4" style="font-weight:700">小计</td><td class="center" style="font-weight:700">20</td><td class="center" style="font-weight:700">6</td></tr>
         </tbody>
-      </table>
+      </table></div>
 
       <div class="sub-section-title" style="margin-top:24px;">✏️ 语法 Grammar（40分）</div>
-      <table>
+      <div class="table-scroll"><table>
         <thead><tr><th>题号</th><th>题目</th><th>学生作答</th><th>正确答案</th><th class="center">分值</th><th class="center">得分</th></tr></thead>
         <tbody>
           <tr><td>G1</td><td>go ___（shop）</td><td>to the shop</td><td>shopping</td><td class="center">2</td><td class="center incorrect">✗ 0</td></tr>
@@ -376,10 +436,10 @@ tbody td.center { text-align: center; }
           <tr><td>G20</td><td>My parents and I ___ have a holiday</td><td class="correct">A are not going to</td><td>A</td><td class="center">2</td><td class="center correct">✓ 2</td></tr>
           <tr class="total-row"><td colspan="4" style="font-weight:700">小计</td><td class="center" style="font-weight:700">40</td><td class="center" style="font-weight:700">22</td></tr>
         </tbody>
-      </table>
+      </table></div>
 
       <div class="sub-section-title" style="margin-top:24px;">📄 阅读 Reading（20分）</div>
-      <table>
+      <div class="table-scroll"><table>
         <thead><tr><th>题号</th><th>题目</th><th>学生作答</th><th>正确答案</th><th class="center">分值</th><th class="center">得分</th></tr></thead>
         <tbody>
           <tr><td>R1</td><td>What did scientists find out about teenagers?</td><td class="correct">C</td><td>C</td><td class="center">2</td><td class="center correct">✓ 2</td></tr>
@@ -394,10 +454,10 @@ tbody td.center { text-align: center; }
           <tr><td>R10</td><td>词义匹配：studying students do after school</td><td class="correct">homework</td><td>homework</td><td class="center">2</td><td class="center correct">✓ 2</td></tr>
           <tr class="total-row"><td colspan="4" style="font-weight:700">小计</td><td class="center" style="font-weight:700">20</td><td class="center" style="font-weight:700">18</td></tr>
         </tbody>
-      </table>
+      </table></div>
 
       <div class="sub-section-title" style="margin-top:24px;">🎧 听力 Listening（20分）</div>
-      <table>
+      <div class="table-scroll"><table>
         <thead><tr><th>题号</th><th>题目</th><th>学生作答</th><th>正确答案</th><th class="center">分值</th><th class="center">得分</th></tr></thead>
         <tbody>
           <tr><td>L1</td><td>图片勾选：图1 Giant Raffle</td><td class="correct">已勾选</td><td>应勾选</td><td class="center">2</td><td class="center correct">✓ 2</td></tr>
@@ -412,7 +472,7 @@ tbody td.center { text-align: center; }
           <tr><td>L10</td><td>organise a ___</td><td>concet of music</td><td>talent contest</td><td class="center">2</td><td class="center incorrect">✗ 0</td></tr>
           <tr class="total-row"><td colspan="4" style="font-weight:700">小计</td><td class="center" style="font-weight:700">20</td><td class="center" style="font-weight:700">12</td></tr>
         </tbody>
-      </table>
+      </table></div>
     </div>
 
   </div><!-- /body -->
