@@ -119,6 +119,66 @@ tbody td.center { text-align: center; }
 .body table thead th:nth-child(1) { text-align: center; }
 .body table thead th:nth-child(3) { text-align: center; }
 .body table thead th:nth-child(4) { text-align: center; }
+.table-scroll { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 8px; margin-bottom: 4px; }
+.table-scroll table { min-width: 560px; margin-bottom: 0; }
+@media (max-width: 768px) {
+  body { font-size: 13px; line-height: 1.65; }
+  .page { width: 100%; max-width: none; margin: 0; border-radius: 0; box-shadow: none; }
+  .report-header { padding: 28px 20px 24px; }
+  .report-title { font-size: 24px; letter-spacing: 1px; }
+  .report-subtitle { letter-spacing: 1px; margin-bottom: 18px; }
+  .header-meta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 18px; }
+  .body { padding: 28px 18px 36px; }
+  .section { margin-bottom: 30px; }
+  .section-title { font-size: 14px; padding-left: 12px; line-height: 1.5; }
+  .section-title span { display: block; margin-left: 0; margin-top: 2px; }
+  .score-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .score-card { min-width: 0; padding: 14px 12px; }
+  .score-card.highlight { grid-column: 1 / -1; }
+  .score-fraction { font-size: 22px; }
+  .level-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .level-cell { padding: 12px 10px; border-bottom: 1px solid var(--border); }
+  .level-cell:nth-child(2n) { border-right: none; }
+  .level-cell:nth-last-child(-n+2) { border-bottom: none; }
+  .level-name { font-size: 13px; line-height: 1.35; }
+  .level-range { font-size: 10px; line-height: 1.45; }
+  .level-badge { font-size: 9px; padding: 2px 6px; }
+  .profile-grid { grid-template-columns: 1fr; }
+  .profile-label, .profile-value { border-top: 1px solid var(--border); }
+  .profile-label:first-child { border-top: none; }
+  .profile-label { padding: 9px 14px 4px; }
+  .profile-value { padding: 4px 14px 11px; }
+  .comment-block { padding: 16px 17px; }
+  .comment-block ul { padding-left: 17px; }
+  .sub-section-title { align-items: flex-start; flex-wrap: wrap; line-height: 1.5; }
+  .sub-section-title::after { display: none; }
+  .score-badge { margin-left: 0 !important; }
+  .report-footer { padding: 14px 18px; flex-direction: column; align-items: flex-start; gap: 4px; }
+  .print-btn { right: 16px; bottom: 16px; padding: 11px 18px; font-size: 12px; }
+  .cta-section { padding: 48px 18px; }
+  .contact-card { min-width: 0; width: 100%; max-width: 340px; padding: 20px 18px; }
+}
+@media (max-width: 480px) {
+  .report-header { padding: 24px 16px 22px; }
+  .school-tag { font-size: 10px; letter-spacing: 1px; }
+  .report-title { font-size: 21px; }
+  .report-subtitle { font-size: 10px; }
+  .header-meta { grid-template-columns: 1fr; gap: 10px; }
+  .meta-item { border-bottom: 1px solid rgba(255,255,255,0.14); padding-bottom: 8px; }
+  .meta-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .body { padding: 24px 14px 32px; }
+  .score-summary { grid-template-columns: 1fr; }
+  .score-card.highlight { grid-column: auto; }
+  .section-title { font-size: 13px; }
+  .comment-block { padding: 14px 15px; }
+  .level-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .level-cell { padding: 10px 6px; }
+  .level-name { font-size: 12px; }
+  .level-range { font-size: 9px; }
+  .table-scroll table { min-width: 520px; }
+  thead th, tbody td { padding: 8px 10px; }
+  .print-btn { left: 14px; right: 14px; width: calc(100% - 28px); text-align: center; border-radius: 10px; }
+}
 @media print { body { background: white; font-size: 12px; } .page { margin: 0; border-radius: 0; box-shadow: none; max-width: 100%; } .no-print { display: none !important; } .section { break-inside: avoid; } .report-header, .score-card.highlight, .level-cell.active, .comment-block, .profile-label, .score-badge, .rate-fill, thead tr { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
 
 .cta-section {
@@ -418,7 +478,7 @@ tbody td.center { text-align: center; }
       <div class="section-title">附录：详细题目得分表 <span>DETAILED SCORING</span></div>
 
       <div class="sub-section-title">词汇 — 英译中 <span class="score-badge badge-low">4/10</span></div>
-      <table>
+      <div class="table-scroll"><table>
         <thead>
           <tr><th>#</th><th>考查词</th><th>学生答案</th><th>标准答案</th><th class="center">结果</th></tr>
         </thead>
@@ -434,10 +494,10 @@ tbody td.center { text-align: center; }
           <tr><td>9</td><td>Carnivorous</td><td class="blank">（空）</td><td>食肉的</td><td class="center incorrect">✗</td></tr>
           <tr><td>10</td><td>Fatigue</td><td>厌倦</td><td>疲劳</td><td class="center incorrect">✗<br><span style="font-size:10px;color:var(--gray-400);font-weight:400;">近义词混淆</span></td></tr>
         </tbody>
-      </table>
+      </table></div>
 
       <div class="sub-section-title">词汇 — 中译英 <span class="score-badge badge-mid">6/10</span></div>
-      <table>
+      <div class="table-scroll"><table>
         <thead>
           <tr><th>#</th><th>考查词</th><th>学生答案</th><th>标准答案</th><th class="center">结果</th></tr>
         </thead>
@@ -453,10 +513,10 @@ tbody td.center { text-align: center; }
           <tr><td>19</td><td>过敏的</td><td>allergy</td><td>allergic</td><td class="center incorrect">✗<br><span style="font-size:10px;color:var(--gray-400);font-weight:400;">名词非形容词</span></td></tr>
           <tr><td>20</td><td>酸雨</td><td class="blank">（空）</td><td>acid rain</td><td class="center incorrect">✗</td></tr>
         </tbody>
-      </table>
+      </table></div>
 
       <div class="sub-section-title">语法 — 填空 <span class="score-badge badge-mid">5/10</span></div>
-      <table>
+      <div class="table-scroll"><table>
         <thead>
           <tr><th>#</th><th>学生答案</th><th>标准答案</th><th class="center">结果</th></tr>
         </thead>
@@ -472,10 +532,10 @@ tbody td.center { text-align: center; }
           <tr><td>9</td><td>shouldn't miss</td><td>would not miss</td><td class="center incorrect">✗<br><span style="font-size:10px;color:var(--gray-400);font-weight:400;">情态动词误用</span></td></tr>
           <tr><td>10</td><td>had said</td><td>had said</td><td class="center correct">✓</td></tr>
         </tbody>
-      </table>
+      </table></div>
 
       <div class="sub-section-title">语法 — 单选 <span class="score-badge badge-mid">7/10</span></div>
-      <table>
+      <div class="table-scroll"><table>
         <thead>
           <tr><th>#</th><th>学生答案</th><th>标准答案</th><th class="center">结果</th></tr>
         </thead>
@@ -491,10 +551,10 @@ tbody td.center { text-align: center; }
           <tr><td>19</td><td>C</td><td>B</td><td class="center incorrect">✗</td></tr>
           <tr><td>20</td><td>A</td><td>A</td><td class="center correct">✓</td></tr>
         </tbody>
-      </table>
+      </table></div>
 
       <div class="sub-section-title">阅读 — 段落主旨 <span class="score-badge badge-high">10/10</span></div>
-      <table>
+      <div class="table-scroll"><table>
         <thead>
           <tr><th>段落</th><th>学生答案</th><th>标准答案</th><th class="center">结果</th></tr>
         </thead>
@@ -505,10 +565,10 @@ tbody td.center { text-align: center; }
           <tr><td>段落 4</td><td>E</td><td>E</td><td class="center correct">✓ (+2)</td></tr>
           <tr><td>段落 5</td><td>C</td><td>C</td><td class="center correct">✓ (+2)</td></tr>
         </tbody>
-      </table>
+      </table></div>
 
       <div class="sub-section-title">阅读 — 句子填空 <span class="score-badge badge-mid">6/10</span></div>
-      <table>
+      <div class="table-scroll"><table>
         <thead>
           <tr><th>#</th><th>学生答案（词＋字母）</th><th>标准答案</th><th class="center">结果</th></tr>
         </thead>
@@ -519,10 +579,10 @@ tbody td.center { text-align: center; }
           <tr><td>4</td><td>cause + B</td><td>reason + B</td><td class="center incorrect">✗<br><span style="font-size:10px;color:var(--gray-400);font-weight:400;">连接词错，字母对</span></td></tr>
           <tr><td>5</td><td>results in + C</td><td>results in + C</td><td class="center correct">✓ (+2)</td></tr>
         </tbody>
-      </table>
+      </table></div>
 
       <div class="sub-section-title">听力 — 填空 <span class="score-badge badge-high">10/10</span></div>
-      <table>
+      <div class="table-scroll"><table>
         <thead>
           <tr><th>#</th><th>学生答案</th><th>标准答案</th><th class="center">结果</th></tr>
         </thead>
@@ -533,10 +593,10 @@ tbody td.center { text-align: center; }
           <tr><td>4</td><td>western</td><td>western</td><td class="center correct">✓ (+2)</td></tr>
           <tr><td>5</td><td>slow</td><td>slow</td><td class="center correct">✓ (+2)</td></tr>
         </tbody>
-      </table>
+      </table></div>
 
       <div class="sub-section-title">听力 — 单选 <span class="score-badge badge-high">10/10</span></div>
-      <table>
+      <div class="table-scroll"><table>
         <thead>
           <tr><th>#</th><th>学生答案</th><th>标准答案</th><th class="center">结果</th></tr>
         </thead>
@@ -547,7 +607,7 @@ tbody td.center { text-align: center; }
           <tr><td>9</td><td>B</td><td>B</td><td class="center correct">✓ (+2)</td></tr>
           <tr><td>10</td><td>A</td><td>A</td><td class="center correct">✓ (+2)</td></tr>
         </tbody>
-      </table>
+      </table></div>
 
     </div>
 
