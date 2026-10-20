@@ -118,6 +118,40 @@ tbody td.center { text-align: center; }
 .contact-name { font-family: 'Noto Serif SC', serif; font-size: 18px; font-weight: 700; color: #f0d080; letter-spacing: 3px; margin-bottom: 4px; }
 .contact-phone { font-size: 20px; font-weight: 700; color: white; letter-spacing: 1.5px; }
 .contact-role { font-size: 10px; color: rgba(255,255,255,0.35); letter-spacing: 3px; margin-top: 4px; text-transform: uppercase; }
+/* ===== Mobile ===== */
+.table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 4px; }
+.table-wrap table { min-width: 560px; }
+@media (max-width: 640px) {
+  body { font-size: 13px; }
+  .page { margin: 0; border-radius: 0; }
+  .report-header { padding: 28px 20px 22px; }
+  .header-topline { flex-direction: column; gap: 10px; }
+  .header-pagetag { text-align: left; }
+  .report-title { font-size: 24px; letter-spacing: 1px; }
+  .report-subtitle { margin-bottom: 16px; letter-spacing: 1px; }
+  .header-meta { gap: 14px 24px; }
+  .body { padding: 24px 16px 32px; }
+  .section { margin-bottom: 28px; }
+  .section-title { font-size: 14px; padding-left: 10px; }
+  .section-title span { display: block; margin: 2px 0 0; }
+  .score-summary { grid-template-columns: repeat(2, 1fr); }
+  .score-card.highlight { grid-column: 1 / -1; }
+  .level-row { grid-template-columns: 1fr; }
+  .level-cell { border-right: none; border-bottom: 1px solid var(--border); padding: 12px; }
+  .level-cell:last-child { border-bottom: none; }
+  .comment-block { padding: 14px 14px; }
+  .profile-grid { grid-template-columns: 1fr; }
+  .profile-label { border-top: 1px solid var(--border); padding: 8px 14px 2px; background: var(--blue-pale); }
+  .profile-value { border-top: none; padding: 6px 14px 12px; }
+  .profile-label:first-child { border-top: none; }
+  .sub-section-title { flex-wrap: wrap; }
+  table { font-size: 12px; }
+  thead th, tbody td { padding: 7px 8px; }
+  .cta-section { padding: 44px 16px; }
+  .contact-card { min-width: 0; width: 100%; padding: 20px 16px 16px; }
+  .report-footer { flex-direction: column; align-items: flex-start; gap: 4px; padding: 14px 16px; }
+  .print-btn { bottom: 16px; right: 16px; padding: 10px 18px; }
+}
 @media print { body { background: white; font-size: 12px; } .page { margin: 0; border-radius: 0; box-shadow: none; max-width: 100%; } .no-print { display: none !important; } .section { break-inside: avoid; } .report-header, .score-card.highlight, .level-cell.active, .comment-block, .profile-label, .score-badge, .rate-fill, thead tr { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
 </style>
 </head>
@@ -326,7 +360,7 @@ tbody td.center { text-align: center; }
       <div class="section-title">📋 六、附录：详细题目得分表 <span>SCORE BREAKDOWN</span></div>
 
       <div class="sub-section-title">📖 词汇 Vocabulary（20分）</div>
-      <table>
+      <div class="table-wrap"><table>
         <thead><tr><th>题号</th><th>题目</th><th>学生作答</th><th>正确答案</th><th class="center">分值</th><th class="center">得分</th></tr></thead>
         <tbody>
           <tr><td>V1</td><td>trainers</td><td>火车司机</td><td>运动鞋</td><td class="center">1</td><td class="center incorrect">✗ 0</td></tr>
@@ -351,10 +385,10 @@ tbody td.center { text-align: center; }
           <tr><td>V20</td><td>科学家</td><td class="correct">scientist</td><td>scientist</td><td class="center">1</td><td class="center correct">✓ 1</td></tr>
           <tr class="total-row"><td colspan="4" style="font-weight:700">小计</td><td class="center" style="font-weight:700">20</td><td class="center" style="font-weight:700">9</td></tr>
         </tbody>
-      </table>
+      </table></div>
 
       <div class="sub-section-title" style="margin-top:24px;">✏️ 语法 Grammar（40分）</div>
-      <table>
+      <div class="table-wrap"><table>
         <thead><tr><th>题号</th><th>题目</th><th>学生作答</th><th>正确答案</th><th class="center">分值</th><th class="center">得分</th></tr></thead>
         <tbody>
           <tr><td>G1</td><td>go ___（shop）</td><td class="correct">shopping</td><td>shopping</td><td class="center">2</td><td class="center correct">✓ 2</td></tr>
@@ -379,10 +413,10 @@ tbody td.center { text-align: center; }
           <tr><td>G20</td><td>My parents and I ___ have a holiday</td><td class="correct">A are not going to</td><td>A are not going to</td><td class="center">2</td><td class="center correct">✓ 2</td></tr>
           <tr class="total-row"><td colspan="4" style="font-weight:700">小计</td><td class="center" style="font-weight:700">40</td><td class="center" style="font-weight:700">20</td></tr>
         </tbody>
-      </table>
+      </table></div>
 
       <div class="sub-section-title" style="margin-top:24px;">📄 阅读 Reading（20分）</div>
-      <table>
+      <div class="table-wrap"><table>
         <thead><tr><th>题号</th><th>题目</th><th>学生作答</th><th>正确答案</th><th class="center">分值</th><th class="center">得分</th></tr></thead>
         <tbody>
           <tr><td>R1</td><td>What did scientists find out about teenagers?</td><td class="correct">C</td><td>C</td><td class="center">2</td><td class="center correct">✓ 2</td></tr>
@@ -397,10 +431,10 @@ tbody td.center { text-align: center; }
           <tr><td>R10</td><td>词义匹配：studying students do after school</td><td class="correct">homework</td><td>homework</td><td class="center">2</td><td class="center correct">✓ 2</td></tr>
           <tr class="total-row"><td colspan="4" style="font-weight:700">小计</td><td class="center" style="font-weight:700">20</td><td class="center" style="font-weight:700">16</td></tr>
         </tbody>
-      </table>
+      </table></div>
 
       <div class="sub-section-title" style="margin-top:24px;">🎧 听力 Listening（20分）</div>
-      <table>
+      <div class="table-wrap"><table>
         <thead><tr><th>题号</th><th>题目</th><th>学生作答</th><th>正确答案</th><th class="center">分值</th><th class="center">得分</th></tr></thead>
         <tbody>
           <tr><td>L1</td><td>图片勾选：图1 Giant Raffle</td><td>未勾选</td><td>应勾选</td><td class="center">2</td><td class="center incorrect">✗ 0</td></tr>
@@ -415,7 +449,7 @@ tbody td.center { text-align: center; }
           <tr><td>L10</td><td>they decide to organise a ___</td><td>空白</td><td>talent contest</td><td class="center">2</td><td class="center incorrect">✗ 0</td></tr>
           <tr class="total-row"><td colspan="4" style="font-weight:700">小计</td><td class="center" style="font-weight:700">20</td><td class="center" style="font-weight:700">8</td></tr>
         </tbody>
-      </table>
+      </table></div>
     </div>
 
   </div>
