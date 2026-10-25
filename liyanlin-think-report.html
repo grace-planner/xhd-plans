@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THINK 入学测试报告</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue-dark:   #1E5F9E;
+  --blue-mid:    #2E75B6;
+  --blue-light:  #D6E8F5;
+  --blue-pale:   #EEF5FB;
+  --green-dark:  #1B5E20;
+  --green-light: #E8F5E9;
+  --red-dark:    #B71C1C;
+  --red-light:   #FFEBEE;
+  --gold:        #C8A94A;
+  --gold-light:  #FFF8E1;
+  --gray-100:    #F7F8FA;
+  --gray-200:    #F0F2F5;
+  --gray-400:    #9AA3B0;
+  --gray-700:    #3D4450;
+  --text:        #2C3340;
+  --border:      #DDE3EC;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Noto Sans SC', sans-serif; background: #EDF1F7; color: var(--text); font-size: 13px; line-height: 1.7; }
+.page { max-width: 820px; margin: 32px auto; background: white; border-radius: 12px; box-shadow: 0 4px 40px rgba(30,95,158,0.10); overflow: hidden; }
+.report-header { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-mid) 100%); padding: 40px 48px 32px; position: relative; overflow: hidden; }
+.report-header::before { content: ''; position: absolute; top: -60px; right: -60px; width: 220px; height: 220px; border-radius: 50%; background: rgba(255,255,255,0.05); }
+.report-header::after { content: ''; position: absolute; bottom: -80px; left: 30%; width: 300px; height: 300px; border-radius: 50%; background: rgba(255,255,255,0.04); }
+.header-topline { display:flex; justify-content:space-between; align-items:flex-start; position:relative; z-index:1; }
+.school-tag { font-size: 12px; color: rgba(255,255,255,0.65); letter-spacing: 1.5px; margin-bottom: 10px; }
+.header-pagetag { font-size: 11px; color: rgba(255,255,255,0.55); letter-spacing: 0.5px; text-align:right; }
+.report-title { font-family: 'Noto Serif SC', serif; font-size: 30px; font-weight: 700; color: white; letter-spacing: 2px; margin-bottom: 4px; }
+.report-subtitle { font-size: 12px; color: rgba(255,255,255,0.50); letter-spacing: 2px; margin-bottom: 24px; }
+.header-meta { display: flex; gap: 32px; flex-wrap: wrap; position:relative; z-index:1; }
+.meta-item { display: flex; flex-direction: column; gap: 2px; }
+.meta-label { font-size: 11px; color: rgba(255,255,255,0.50); letter-spacing: 1px; }
+.meta-value { font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.92); }
+.body { padding: 40px 48px 48px; }
+.section { margin-bottom: 40px; }
+.section-title { font-family: 'Noto Serif SC', serif; font-size: 15px; font-weight: 600; color: var(--blue-dark); border-left: 4px solid var(--blue-dark); padding: 6px 0 6px 14px; margin-bottom: 16px; letter-spacing: 0.5px; }
+.section-title span { font-family: 'Noto Sans SC', sans-serif; font-size: 11px; font-weight: 400; color: var(--gray-400); margin-left: 8px; letter-spacing: 1px; }
+.score-summary { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+.score-card { border-radius: 10px; padding: 16px 14px; border: 1px solid var(--border); background: var(--gray-100); display: flex; flex-direction: column; }
+.score-card.highlight { background: linear-gradient(135deg, var(--blue-dark), var(--blue-mid)); border-color: transparent; }
+.score-card-label { font-size: 11px; color: var(--gray-400); letter-spacing: 0.3px; margin-bottom: 10px; line-height: 1.4; }
+.score-card.highlight .score-card-label { color: rgba(255,255,255,0.65); }
+.score-fraction { font-family: 'Noto Serif SC', serif; font-size: 24px; font-weight: 700; color: var(--blue-dark); line-height: 1; margin-bottom: 4px; }
+.score-fraction.red { color: #C62828; }
+.score-fraction.green { color: #2E7D32; }
+.score-card.highlight .score-fraction { color: white; }
+.score-fraction sub { font-size: 12px; font-weight: 400; color: var(--gray-400); }
+.score-card.highlight .score-fraction sub { color: rgba(255,255,255,0.55); }
+.score-rate { font-size: 11px; color: var(--gray-400); margin-top: 3px; }
+.score-card.highlight .score-rate { color: rgba(255,255,255,0.65); }
+.rate-bar { height: 4px; background: var(--border); border-radius: 2px; margin-top: 10px; overflow: hidden; }
+.score-card.highlight .rate-bar { background: rgba(255,255,255,0.2); }
+.rate-fill { height: 100%; border-radius: 2px; background: var(--blue-mid); }
+.score-card.highlight .rate-fill { background: rgba(255,255,255,0.8); }
+.level-row { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+.level-cell { padding: 16px 12px; text-align: center; border-right: 1px solid var(--border); background: var(--gray-100); }
+.level-cell:last-child { border-right: none; }
+.level-cell.active { background: var(--blue-dark); }
+.level-name { font-weight: 700; font-size: 14px; color: var(--gray-700); margin-bottom: 4px; }
+.level-cell.active .level-name { color: white; }
+.level-range { font-size: 11px; color: var(--gray-400); }
+.level-cell.active .level-range { color: rgba(255,255,255,0.70); }
+.level-badge { display: inline-block; margin-top: 6px; font-size: 10px; background: rgba(255,255,255,0.2); border-radius: 4px; padding: 2px 8px; color: white; }
+.sub-section-title { font-size: 13px; font-weight: 600; color: var(--blue-mid); margin: 20px 0 8px; display: flex; align-items: center; gap: 8px; }
+.sub-section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.score-badge { font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 20px; color: white; white-space: nowrap; }
+.badge-high { background: #2E7D32; }
+.badge-mid  { background: var(--blue-mid); }
+.badge-low  { background: #E65100; }
+.badge-zero { background: #C62828; }
+table { width: 100%; border-collapse: collapse; font-size: 12.5px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); margin-bottom: 4px; }
+thead tr { background: var(--blue-dark); color: white; }
+thead th { padding: 9px 12px; text-align: left; font-weight: 500; font-size: 12px; letter-spacing: 0.3px; }
+thead th.center { text-align: center; }
+tbody tr:nth-child(odd)  { background: var(--gray-100); }
+tbody tr:nth-child(even) { background: white; }
+tbody tr:hover { background: var(--blue-pale); }
+tbody td { padding: 8px 12px; border-top: 1px solid var(--border); vertical-align: middle; }
+tbody td.center { text-align: center; }
+.correct   { color: #2E7D32; font-weight: 600; }
+.incorrect { color: #C62828; font-weight: 600; }
+.comment-block { border-radius: 10px; padding: 18px 22px; margin-bottom: 12px; border-left: 4px solid; }
+.comment-block.good    { background: var(--green-light); border-color: #388E3C; }
+.comment-block.improve { background: var(--red-light);   border-color: #E53935; }
+.comment-block.advice  { background: var(--blue-pale);   border-color: var(--blue-mid); }
+.comment-block.warn    { background: var(--gold-light);  border-color: var(--gold); }
+.comment-title { font-weight: 700; font-size: 13px; letter-spacing: 0.3px; margin-bottom: 8px; }
+.comment-block.good    .comment-title { color: var(--green-dark); }
+.comment-block.improve .comment-title { color: var(--red-dark); }
+.comment-block.advice  .comment-title { color: var(--blue-dark); }
+.comment-block.warn    .comment-title { color: #E65100; }
+.comment-block ul { padding-left: 18px; }
+.comment-block li { font-size: 12.5px; color: var(--gray-700); margin-bottom: 5px; line-height: 1.65; }
+.comment-block p { font-size: 12.5px; color: var(--gray-700); line-height: 1.75; }
+.profile-grid { display: grid; grid-template-columns: 180px 1fr; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+.profile-label { background: var(--blue-pale); padding: 10px 16px; font-weight: 600; font-size: 12px; color: var(--blue-dark); border-top: 1px solid var(--border); }
+.profile-value { background: white; padding: 10px 16px; font-size: 12.5px; color: var(--gray-700); border-top: 1px solid var(--border); }
+.profile-label:first-child, .profile-value:nth-child(2) { border-top: none; }
+.divider { height: 1px; background: var(--border); margin: 32px 0; }
+.report-footer { border-top: 1px solid var(--border); padding: 16px 48px; display: flex; justify-content: space-between; align-items: center; background: var(--gray-100); font-size: 11px; color: var(--gray-400); }
+.print-btn { position: fixed; bottom: 32px; right: 32px; background: var(--blue-dark); color: white; border: none; border-radius: 50px; padding: 12px 24px; font-size: 13px; font-family: 'Noto Sans SC', sans-serif; font-weight: 500; cursor: pointer; box-shadow: 0 4px 20px rgba(30,95,158,0.35); letter-spacing: 0.5px; transition: transform 0.15s, box-shadow 0.15s; z-index: 100; }
+.print-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(30,95,158,0.45); }
+.cta-section { background: linear-gradient(160deg, #0d2240 0%, #1a4f8b 100%); padding: 64px 20px; text-align: center; position: relative; overflow: hidden; }
+.cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(200,150,62,0.1) 0%, transparent 70%); }
+.cta-en { font-family: 'Noto Serif SC', serif; font-style: italic; font-size: 13px; color: rgba(200,150,62,0.65); letter-spacing: 3px; margin-bottom: 12px; position: relative; }
+.cta-title { font-family: 'Noto Serif SC', serif; font-size: clamp(24px, 6vw, 34px); color: white; font-weight: 700; letter-spacing: 3px; margin-bottom: 6px; position: relative; }
+.cta-sub { font-size: 13px; color: rgba(255,255,255,0.5); letter-spacing: 1.5px; margin-bottom: 36px; position: relative; }
+.contact-card { display: inline-flex; flex-direction: column; align-items: center; border: 1px solid rgba(200,151,62,0.35); padding: 24px 28px 20px; background: rgba(255,255,255,0.04); position: relative; min-width: 260px; cursor: pointer; transition: border-color .25s, box-shadow .25s; text-decoration: none; color: inherit; }
+.contact-card:hover { border-color: rgba(200,151,62,0.8); box-shadow: 0 0 20px rgba(200,151,62,0.2); }
+.contact-name { font-family: 'Noto Serif SC', serif; font-size: 18px; font-weight: 700; color: #f0d080; letter-spacing: 3px; margin-bottom: 4px; }
+.contact-phone { font-size: 20px; font-weight: 700; color: white; letter-spacing: 1.5px; }
+.contact-role { font-size: 10px; color: rgba(255,255,255,0.35); letter-spacing: 3px; margin-top: 4px; text-transform: uppercase; }
+.avatar-fallback { width:52px; height:52px; border-radius:50%; flex-shrink:0; border:2px solid rgba(200,151,62,0.4); background: rgba(200,151,62,0.18); color:#f0d080; display:flex; align-items:center; justify-content:center; font-family:'Noto Serif SC',serif; font-size:22px; font-weight:700; }
+@media (max-width: 640px) {
+  body { font-size: 13px; }
+  .page { margin: 0; border-radius: 0; box-shadow: none; }
+  .report-header { padding: 28px 20px 22px; }
+  .header-topline { flex-direction: column; gap: 6px; }
+  .header-pagetag { text-align: left; }
+  .report-title { font-size: 24px; letter-spacing: 1px; }
+  .header-meta { gap: 18px 24px; }
+  .body { padding: 24px 16px 32px; }
+  .section { margin-bottom: 30px; }
+  .section-title { font-size: 14px; }
+  .score-summary { grid-template-columns: repeat(2, 1fr); }
+  .score-card.highlight { grid-column: 1 / -1; }
+  .level-row { grid-template-columns: 1fr; }
+  .level-cell { border-right: none; border-bottom: 1px solid var(--border); padding: 12px; }
+  .level-cell:last-child { border-bottom: none; }
+  .comment-block { padding: 14px 16px; }
+  .profile-grid { grid-template-columns: 1fr; }
+  .profile-label { border-top: 1px solid var(--border); padding: 8px 14px 2px; }
+  .profile-value { border-top: none; padding: 2px 14px 10px; }
+  .profile-label:first-child { border-top: none; }
+  .sub-section-title { flex-wrap: wrap; }
+  table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; white-space: nowrap; font-size: 12px; }
+  thead th, tbody td { padding: 7px 9px; }
+  .report-footer { flex-direction: column; align-items: flex-start; gap: 4px; padding: 14px 16px; }
+  .cta-section { padding: 44px 16px; }
+  .contact-card { min-width: 0; width: 100%; max-width: 320px; padding: 20px 18px 16px; }
+  .print-btn { bottom: 16px; right: 16px; padding: 10px 18px; }
+}
+@media print { body { background: white; font-size: 12px; } .page { margin: 0; border-radius: 0; box-shadow: none; max-width: 100%; } .no-print { display: none !important; } .section { break-inside: avoid; } .report-header, .score-card.highlight, .level-cell.active, .comment-block, .profile-label, .score-badge, .rate-fill, thead tr { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+</style>
+</head>
+<body>
+
+<button class="print-btn no-print" onclick="window.print()">🖨️ 打印 / 导出 PDF</button>
+
+<div class="page">
+
+  <!-- Header -->
+  <div class="report-header">
+    <div class="header-topline">
+      <div>
+        <div class="school-tag">NEW CHANNEL CHENGDU SCHOOL</div>
+        <div class="report-title">THINK 入学测试报告</div>
+        <div class="report-subtitle">THINK PLACEMENT TEST REPORT</div>
+      </div>
+      <div class="header-pagetag">新航道成都学校｜THINK入学测试报告</div>
+    </div>
+    <div class="header-meta">
+      <div class="meta-item">
+        <div class="meta-label">学员姓名</div>
+        <div class="meta-value">李彦霖</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">测试日期</div>
+        <div class="meta-value">2026年10月25日</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">总分</div>
+        <div class="meta-value">20 / 100</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">级别定位</div>
+        <div class="meta-value">THINK Starter（A1）</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <!-- 一、总分汇总 -->
+    <div class="section">
+      <div class="section-title">📊 一、综合成绩一览 <span>SCORE SUMMARY</span></div>
+      <div class="score-summary">
+        <div class="score-card">
+          <div class="score-card-label">📖 词汇 Vocabulary</div>
+          <div class="score-fraction red">0<sub>/20</sub></div>
+          <div class="score-rate">得分率 0%</div>
+          <div class="rate-bar"><div class="rate-fill" style="width:0%;background:#C62828;"></div></div>
+        </div>
+        <div class="score-card">
+          <div class="score-card-label">✏️ 语法 Grammar</div>
+          <div class="score-fraction">12<sub>/40</sub></div>
+          <div class="score-rate">得分率 30%</div>
+          <div class="rate-bar"><div class="rate-fill" style="width:30%;"></div></div>
+        </div>
+        <div class="score-card">
+          <div class="score-card-label">📄 阅读 Reading</div>
+          <div class="score-fraction">8<sub>/20</sub></div>
+          <div class="score-rate">得分率 40%</div>
+          <div class="rate-bar"><div class="rate-fill" style="width:40%;"></div></div>
+        </div>
+        <div class="score-card">
+          <div class="score-card-label">🎧 听力 Listening</div>
+          <div class="score-fraction red">0<sub>/20</sub></div>
+          <div class="score-rate">得分率 0%</div>
+          <div class="rate-bar"><div class="rate-fill" style="width:0%;background:#C62828;"></div></div>
+        </div>
+        <div class="score-card highlight">
+          <div class="score-card-label">总分 TOTAL</div>
+          <div class="score-fraction">20<sub>/100</sub></div>
+          <div class="score-rate">得分率 20%</div>
+          <div class="rate-bar"><div class="rate-fill" style="width:20%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 二、级别定位 -->
+    <div class="section">
+      <div class="section-title">🎯 二、级别定位 <span>LEVEL PLACEMENT</span></div>
+      <div class="level-row">
+        <div class="level-cell active">
+          <div class="level-name">THINK Starter</div>
+          <div class="level-range">CEFR A1 ｜ 约 30 分</div>
+          <div class="level-badge">本次得分 20 分</div>
+        </div>
+        <div class="level-cell">
+          <div class="level-name">THINK 1</div>
+          <div class="level-range">CEFR A2 ｜ 约 50 分</div>
+        </div>
+        <div class="level-cell">
+          <div class="level-name">THINK 2</div>
+          <div class="level-range">CEFR B1 ｜ 约 70 分</div>
+        </div>
+      </div>
+      <div class="comment-block warn" style="margin-top:14px;">
+        <div class="comment-title">⚠️ 定位说明</div>
+        <p>本次总分 20 分，低于 THINK Starter 的参考分数线（约 30 分），定位为 THINK Starter。各板块表现悬殊：词汇与听力均为 0 分（词汇仅有 1 题作答、听力整部分未作答），语法（30%）与阅读（40%）有部分得分。建议入班前以基础词汇和听力为重点，优先夯实 Starter 阶段的基础。</p>
+      </div>
+    </div>
+
+    <!-- 三、各板块详细分析 -->
+    <div class="section">
+      <div class="section-title">🔍 三、各板块详细分析 <span>SECTION ANALYSIS</span></div>
+
+      <div class="sub-section-title">📖 词汇 Vocabulary <span class="score-badge badge-zero" style="margin-left:auto">0%</span></div>
+      <div class="comment-block improve">
+        <div class="comment-title">❌ 主要失分点</div>
+        <ul>
+          <li>英译中 10 题全部空白，trainers、helicopter、youth、calculator、persuade、experiment、permission、decorate、zebra、laptop 均未作答</li>
+          <li>中译英 10 题仅作答 1 题：平板电脑写成 pad（正确答案 tablet），其余 9 题（口渴的、堂(表)兄弟姐妹、车库、浴室、超市、海洋、潮湿的、吉他、科学家）全部空白</li>
+          <li>本部分 20 题 0 分，含 thirsty、zebra、scientist、guitar、garage、bathroom 等本阶段基础词，说明基础词汇积累严重不足</li>
+        </ul>
+      </div>
+
+      <div class="sub-section-title">✏️ 语法 Grammar <span class="score-badge badge-low" style="margin-left:auto">30%</span></div>
+      <div class="comment-block good">
+        <div class="comment-title">✅ 已掌握</div>
+        <ul>
+          <li>选择题 10 题对 6 题：过去完成时基础用法（had walked）、there be 单数（There is）、现在进行时（is listening）、情态动词否定（mustn't）、物主代词（mine）、一般过去式（saw）已能正确运用</li>
+        </ul>
+      </div>
+      <div class="comment-block improve">
+        <div class="comment-title">❌ 主要失分点</div>
+        <ul>
+          <li>词形变换填空 10 题全部答错：shoped（应为 shopping）、haves（应为 has）、knowed（应为 know）、learnd（应为 learned）、science（应为 scientists）、possible（应为 possibilities）、riches（应为 richest）、wide（应为 widened）、effect（应为 effective）；动名词、不规则动词、名词复数、形容词最高级、词性转换等规则均未掌握</li>
+          <li>be 动词过去式：第 3 题写成 was being，应为 was，时态与结构混用</li>
+          <li>时态辨析：has had 与 had had 区分错误（选 has had，应为 had had）</li>
+          <li>名词所有格：My best friend's name 选成 friend，漏掉所有格 's</li>
+          <li>there be 过去式：At Lucy's party last night, 40 people 选 there was，应为 there were，单复数一致错误</li>
+          <li>be going to 否定：选 are not having to，正确答案为 are not going to</li>
+        </ul>
+      </div>
+
+      <div class="sub-section-title">📄 阅读 Reading <span class="score-badge badge-low" style="margin-left:auto">40%</span></div>
+      <div class="comment-block good">
+        <div class="comment-title">✅ 已掌握</div>
+        <ul>
+          <li>细节理解选择题 4 题对 2 题（第 1 题科学家对青少年睡眠的发现、第 4 题韩国学生的情况），能抓住部分直接信息</li>
+          <li>词义匹配题 6 题对 2 题：secondary schools、scientists 匹配正确</li>
+        </ul>
+      </div>
+      <div class="comment-block improve">
+        <div class="comment-title">❌ 主要失分点</div>
+        <ul>
+          <li>细节理解第 2 题（巴西学生）选 A，应为 B；第 3 题（哪国学生午间有用餐休息）选 B（the UK），应为 C（Spain），需要定位并核对文中具体信息的题目判断不准确</li>
+          <li>词义匹配 4 题答错：pupils 对应 children at school 误填 break；break 对应 stop work to eat or rest 误填 homework；lessons 对应 periods of time you learn something 误填 pupils；homework 对应 the studying students do after school 误填 lessons。核心课堂词汇 pupils / break / lessons / homework 的词义混淆，与词汇部分的结果相互印证</li>
+        </ul>
+      </div>
+
+      <div class="sub-section-title">🎧 听力 Listening <span class="score-badge badge-zero" style="margin-left:auto">0%</span></div>
+      <div class="comment-block improve">
+        <div class="comment-title">❌ 主要失分点</div>
+        <ul>
+          <li>图片勾选题与句子填空题均未作答，本部分 0 分</li>
+          <li>无法判断学生在听力板块的真实能力，仅能确认本次测试未完成该部分</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 四、学情总结 -->
+    <div class="section">
+      <div class="section-title">🧠 四、学情总结 <span>LEARNING PROFILE</span></div>
+      <div class="profile-grid">
+        <div class="profile-label">整体水平</div>
+        <div class="profile-value">总分 20/100（20%），低于 THINK Starter 参考分数线（约 30 分），基础薄弱</div>
+        <div class="profile-label">相对强项</div>
+        <div class="profile-value">语法选择题（6/10）和阅读细节题（2/4）有一定得分，在有选项提示的识别型题目上表现好于产出型题目</div>
+        <div class="profile-label">相对薄弱项</div>
+        <div class="profile-value">词汇（0/20）与听力（0/20）均为 0 分；语法词形变换填空 0/10</div>
+        <div class="profile-label">学习特点</div>
+        <div class="profile-value">识别型题目（选择题）明显好于产出型题目（拼写、词形变换）。语法填空 10 题每题都有作答，但 shoped、haves、knowed 一类写法显示对规则与不规则变化混淆；词汇部分仅 1/20 题有作答，听力整部分未作答，基础词汇积累与应试完成度均需提升</div>
+        <div class="profile-label">备注</div>
+        <div class="profile-value">听力部分整部分未作答，按 0 分计；语法第 3 题学生答案为 was being，按错误计；选择题第 9、10 题均选 C</div>
+      </div>
+    </div>
+
+    <!-- 五、课程规划建议 -->
+    <div class="section">
+      <div class="section-title">📝 五、课程规划建议 <span>COURSE PLANNING</span></div>
+      <div class="comment-block advice">
+        <div class="comment-title">💡 建议方向</div>
+        <ul>
+          <li><strong>① 入班起点：</strong>总分低于 Starter 参考分数线，建议以 THINK Starter 作为入班起点</li>
+          <li><strong>② 词汇专项：</strong>优先建立基础词汇量，从日常高频词（家庭成员、房间、电子产品、动物、职业）入手，采用"看-听-说-写"四步循环，并做每日听写、默写</li>
+          <li><strong>③ 语法专项：</strong>先稳固规则变化——动词 -ing / -ed、名词复数、形容词最高级，再区分 be 动词过去式（was/were）、there be 单复数及 be going to 结构；配合词性转换（名词→形容词、形容词→名词）专项练习</li>
+          <li><strong>④ 听力专项：</strong>本次整部分未作答，建议先从图片勾选类低难度题型入手，逐步过渡到句子填空，培养听抓关键词与转写的习惯</li>
+          <li><strong>⑤ 阅读专项：</strong>核心课堂词汇（pupils、break、lessons、homework）单独强化，再训练回读原文、定位细节的答题方法</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 六、附录：详细题目得分表 -->
+    <div class="section">
+      <div class="section-title">📋 六、附录：详细题目得分表 <span>SCORE BREAKDOWN</span></div>
+
+      <div class="sub-section-title">📖 词汇 Vocabulary（20分）</div>
+      <table>
+        <thead><tr><th>题号</th><th>题目</th><th>学生作答</th><th>正确答案</th><th class="center">分值</th><th class="center">得分</th></tr></thead>
+        <tbody>
+          <tr><td>V1</td><td>trainers</td><td>空白</td><td>运动鞋</td><td class="center">1</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>V2</td><td>helicopter</td><td>空白</td><td>直升飞机</td><td class="center">1</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>V3</td><td>youth</td><td>空白</td><td>青年</td><td class="center">1</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>V4</td><td>calculator</td><td>空白</td><td>计算器</td><td class="center">1</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>V5</td><td>persuade</td><td>空白</td><td>说服</td><td class="center">1</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>V6</td><td>experiment</td><td>空白</td><td>实验</td><td class="center">1</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>V7</td><td>permission</td><td>空白</td><td>许可</td><td class="center">1</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>V8</td><td>decorate</td><td>空白</td><td>装饰</td><td class="center">1</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>V9</td><td>zebra</td><td>空白</td><td>斑马</td><td class="center">1</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>V10</td><td>laptop</td><td>空白</td><td>笔记本电脑</td><td class="center">1</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>V11</td><td>口渴的</td><td>空白</td><td>thirsty</td><td class="center">1</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>V12</td><td>堂(表)兄弟姐妹</td><td>空白</td><td>cousin</td><td class="center">1</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>V13</td><td>车库</td><td>空白</td><td>garage</td><td class="center">1</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>V14</td><td>浴室</td><td>空白</td><td>bathroom</td><td class="center">1</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>V15</td><td>平板电脑</td><td>pad</td><td>tablet</td><td class="center">1</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>V16</td><td>超市</td><td>空白</td><td>supermarket</td><td class="center">1</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>V17</td><td>海洋</td><td>空白</td><td>ocean</td><td class="center">1</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>V18</td><td>潮湿的</td><td>空白</td><td>humid</td><td class="center">1</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>V19</td><td>吉他</td><td>空白</td><td>guitar</td><td class="center">1</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>V20</td><td>科学家</td><td>空白</td><td>scientist</td><td class="center">1</td><td class="center incorrect">✗ 0</td></tr>
+          <tr class="total-row"><td colspan="4" style="font-weight:700">小计</td><td class="center" style="font-weight:700">20</td><td class="center" style="font-weight:700">0</td></tr>
+        </tbody>
+      </table>
+
+      <div class="sub-section-title" style="margin-top:24px;">✏️ 语法 Grammar（40分）</div>
+      <table>
+        <thead><tr><th>题号</th><th>题目</th><th>学生作答</th><th>正确答案</th><th class="center">分值</th><th class="center">得分</th></tr></thead>
+        <tbody>
+          <tr><td>G1</td><td>go ___（shop）</td><td>shoped</td><td>shopping</td><td class="center">2</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>G2</td><td>living room ___ a door（have）</td><td>haves</td><td>has</td><td class="center">2</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>G3</td><td>their mum ___ in the kitchen（be）</td><td>was being</td><td>was</td><td class="center">2</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>G4</td><td>Did you ___ cows can...（know）</td><td>knowed</td><td>know</td><td class="center">2</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>G5</td><td>has ___ to fly a rocket（learn）</td><td>learnd</td><td>learned</td><td class="center">2</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>G6</td><td>___ believe they will find（science）</td><td>science</td><td>scientists</td><td class="center">2</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>G7</td><td>any ___ that you could...（possible）</td><td>possible</td><td>possibilities</td><td class="center">2</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>G8</td><td>one of the ___ women（rich）</td><td>riches</td><td>richest</td><td class="center">2</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>G9</td><td>has been ___ to reduce...（wide）</td><td>wide</td><td>widened</td><td class="center">2</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>G10</td><td>money is a(n) ___ way（effect）</td><td>effect</td><td>effective</td><td class="center">2</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>G11</td><td>tired after we ___ all over the city</td><td class="correct">B had walked</td><td>B</td><td class="center">2</td><td class="center correct">✓ 2</td></tr>
+          <tr><td>G12</td><td>he ___ an amazing holiday in Greece</td><td>B has had</td><td>C had had</td><td class="center">2</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>G13</td><td>My best ___ name is Kate</td><td>B friend</td><td>A friend's</td><td class="center">2</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>G14</td><td>___ a nice café next to the park</td><td class="correct">B There is</td><td>B</td><td class="center">2</td><td class="center correct">✓ 2</td></tr>
+          <tr><td>G15</td><td>My brother ___ to music with headphones</td><td class="correct">A is listening</td><td>A</td><td class="center">2</td><td class="center correct">✓ 2</td></tr>
+          <tr><td>G16</td><td>You ___ forget to buy a present</td><td class="correct">A mustn't</td><td>A</td><td class="center">2</td><td class="center correct">✓ 2</td></tr>
+          <tr><td>G17</td><td>At Lucy's party, ___ 40 people</td><td>B there was</td><td>C there were</td><td class="center">2</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>G18</td><td>This pen isn't yours, it's ___</td><td class="correct">B mine</td><td>B</td><td class="center">2</td><td class="center correct">✓ 2</td></tr>
+          <tr><td>G19</td><td>We ___ a very good film last night</td><td class="correct">C saw</td><td>C</td><td class="center">2</td><td class="center correct">✓ 2</td></tr>
+          <tr><td>G20</td><td>My parents and I ___ have a holiday</td><td>C are not having to</td><td>A are not going to</td><td class="center">2</td><td class="center incorrect">✗ 0</td></tr>
+          <tr class="total-row"><td colspan="4" style="font-weight:700">小计</td><td class="center" style="font-weight:700">40</td><td class="center" style="font-weight:700">12</td></tr>
+        </tbody>
+      </table>
+
+      <div class="sub-section-title" style="margin-top:24px;">📄 阅读 Reading（20分）</div>
+      <table>
+        <thead><tr><th>题号</th><th>题目</th><th>学生作答</th><th>正确答案</th><th class="center">分值</th><th class="center">得分</th></tr></thead>
+        <tbody>
+          <tr><td>R1</td><td>What did scientists find out about teenagers?</td><td class="correct">C</td><td>C</td><td class="center">2</td><td class="center correct">✓ 2</td></tr>
+          <tr><td>R2</td><td>What do students in Brazil do?</td><td>A</td><td>B</td><td class="center">2</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>R3</td><td>Where do students have a meal between lessons?</td><td>B（the UK）</td><td>C（Spain）</td><td class="center">2</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>R4</td><td>What is true about students in South Korea?</td><td class="correct">A</td><td>A</td><td class="center">2</td><td class="center correct">✓ 2</td></tr>
+          <tr><td>R5</td><td>词义匹配：schools you go to from age 11</td><td class="correct">secondary schools</td><td>secondary schools</td><td class="center">2</td><td class="center correct">✓ 2</td></tr>
+          <tr><td>R6</td><td>词义匹配：children at school</td><td>break</td><td>pupils</td><td class="center">2</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>R7</td><td>词义匹配：people who try to understand the world</td><td class="correct">scientists</td><td>scientists</td><td class="center">2</td><td class="center correct">✓ 2</td></tr>
+          <tr><td>R8</td><td>词义匹配：stop work to eat or rest</td><td>homework</td><td>break</td><td class="center">2</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>R9</td><td>词义匹配：periods of time you learn something</td><td>pupils</td><td>lessons</td><td class="center">2</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>R10</td><td>词义匹配：studying students do after school</td><td>lessons</td><td>homework</td><td class="center">2</td><td class="center incorrect">✗ 0</td></tr>
+          <tr class="total-row"><td colspan="4" style="font-weight:700">小计</td><td class="center" style="font-weight:700">20</td><td class="center" style="font-weight:700">8</td></tr>
+        </tbody>
+      </table>
+
+      <div class="sub-section-title" style="margin-top:24px;">🎧 听力 Listening（20分）</div>
+      <table>
+        <thead><tr><th>题号</th><th>题目</th><th>学生作答</th><th>正确答案</th><th class="center">分值</th><th class="center">得分</th></tr></thead>
+        <tbody>
+          <tr><td>L1</td><td>图片勾选：图1 Giant Raffle</td><td>未勾选</td><td>应勾选</td><td class="center">2</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>L2</td><td>图片勾选：图3 Bake sale</td><td>未勾选</td><td>应勾选</td><td class="center">2</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>L3</td><td>图片勾选：图4</td><td>未勾选</td><td>应勾选</td><td class="center">2</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>L4</td><td>图片勾选：图5 Talent Contest</td><td>未勾选</td><td>应勾选</td><td class="center">2</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>L5</td><td>图片勾选：图6 吉他演出</td><td>未勾选</td><td>应勾选</td><td class="center">2</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>L6</td><td>The class decided to ___ for people...</td><td>空白</td><td>raise money</td><td class="center">2</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>L7</td><td>Emily ___ there were so many homeless people</td><td>空白</td><td>didn't know</td><td class="center">2</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>L8</td><td>difficult to find good ___ for the raffle</td><td>空白</td><td>prizes</td><td class="center">2</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>L9</td><td>Emily wants the class to ___ to sell</td><td>空白</td><td>make things</td><td class="center">2</td><td class="center incorrect">✗ 0</td></tr>
+          <tr><td>L10</td><td>organise a ___</td><td>空白</td><td>talent contest</td><td class="center">2</td><td class="center incorrect">✗ 0</td></tr>
+          <tr class="total-row"><td colspan="4" style="font-weight:700">小计</td><td class="center" style="font-weight:700">20</td><td class="center" style="font-weight:700">0</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div style="position:relative;z-index:1;">
+      <div class="cta-en">Your Future Starts Here</div>
+      <div class="cta-title">想了解更多？</div>
+      <div class="cta-sub">欢迎随时联系 · 为孩子提前规划未来</div>
+      <div style="display:flex;justify-content:center;">
+        <a href="https://grace-planner.github.io/xhd-projects/grace-home.html" target="_blank" class="contact-card">
+          <div style="display:flex;align-items:center;gap:18px;width:100%;">
+            <div class="avatar-fallback">G</div>
+            <div style="text-align:left;">
+              <div class="contact-name">Grace</div>
+              <div class="contact-phone">185 1282 0890</div>
+              <div class="contact-role">国际课程升学顾问</div>
+            </div>
+          </div>
+          <div style="margin-top:14px;width:100%;border-top:1px solid rgba(200,151,62,0.2);padding-top:12px;text-align:center;">
+            <span style="color:#f0d080;font-size:10px;letter-spacing:2px;font-family:'Noto Sans SC',sans-serif;">点击访问个人主页</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div class="report-footer">
+    <div>THINK 入学测试报告</div>
+    <div>新航道成都学校｜如有疑问请联系课程主管龚老师 18512820890</div>
+  </div>
+
+</div>
+
+</body>
+</html>
