@@ -46,10 +46,43 @@ body {
 
 /* ── Banner ── */
 .banner {
-  background: linear-gradient(135deg, var(--brand) 0%, #1e6bb8 60%, #2a7fd4 100%);
+  background: linear-gradient(130deg, var(--brand) 0%, #1e6bb8 35%, #2a7fd4 62%, #174e86 100%);
+  background-size: 220% 220%;
+  animation: bannerDrift 16s ease-in-out infinite alternate;
   padding: 44px 48px 36px;
   position: relative;
   overflow: hidden;
+}
+@keyframes bannerDrift {
+  from { background-position: 0% 30%; }
+  to   { background-position: 100% 70%; }
+}
+/* 光斑缓慢漂浮 */
+.banner::before { animation: orbFloat 11s ease-in-out infinite alternate; }
+.banner::after  { animation: orbFloat2 14s ease-in-out infinite alternate; }
+@keyframes orbFloat {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(-36px, 30px) scale(1.12); }
+}
+@keyframes orbFloat2 {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(42px, -26px) scale(1.08); }
+}
+/* 入场：标签 → 标题 → 副标题 → 元信息 依次升起 */
+.banner .school-tag,
+.banner .banner-title,
+.banner .banner-sub,
+.banner .banner-meta {
+  opacity: 0;
+  transform: translateY(14px);
+  animation: riseIn .9s cubic-bezier(.22,1,.36,1) forwards;
+}
+.banner .banner-title { animation-delay: .15s; }
+.banner .banner-sub   { animation-delay: .3s; }
+.banner .banner-meta  { animation-delay: .45s; }
+.banner .meta-item { display: flex; flex-direction: column; gap: 3px; }
+@keyframes riseIn {
+  to { opacity: 1; transform: translateY(0); }
 }
 .banner::before {
   content: '';
@@ -135,7 +168,6 @@ body {
   flex-wrap: wrap;
   position: relative;
 }
-.meta-item { display: flex; flex-direction: column; gap: 3px; }
 .meta-label { font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 1px; }
 .meta-value { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.92); }
 
@@ -427,7 +459,17 @@ body {
   .print-btn { display: none; }
   .pc-total-amt { font-size: 30px; }
 }
+@media (prefers-reduced-motion: reduce) {
+  .banner, .banner::before, .banner::after { animation: none !important; }
+  .banner .school-tag, .banner .banner-title, .banner .banner-sub, .banner .banner-meta {
+    animation: none !important; opacity: 1 !important; transform: none !important;
+  }
+}
 @media print {
+  .banner, .banner::before, .banner::after { animation: none !important; }
+  .banner .school-tag, .banner .banner-title, .banner .banner-sub, .banner .banner-meta {
+    animation: none !important; opacity: 1 !important; transform: none !important;
+  }
   body { background: white; }
   .page { margin: 0; border-radius: 0; box-shadow: none; max-width: 100%; }
   .print-btn { display: none; }
